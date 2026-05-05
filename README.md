@@ -77,3 +77,7 @@ Admin:
 - `/admin/customers`
 - `/admin/promotions`
 - `/admin/reports`
+
+
+vercel
+render
