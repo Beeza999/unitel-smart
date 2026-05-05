@@ -1,0 +1,156 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum SimType {
+  VIP
+  LUCKY
+  EASY
+  PREMIUM
+  HOT
+}
+
+enum SimStatus {
+  AVAILABLE
+  RESERVED
+  SOLD
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+}
+
+enum PackageType {
+  DAILY
+  WEEKLY
+  MONTHLY
+  UNLIMITED
+  SOCIAL
+  GAMING
+  TOURIST
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  CANCELLED
+}
+
+enum DeliveryType {
+  PICKUP
+  HOME_DELIVERY
+  ESIM_EMAIL
+}
+
+enum PaymentType {
+  COD
+  BANK_TRANSFER
+  QR_PAYMENT
+  PAY_AT_STORE
+}
+
+enum ItemType {
+  SIM
+  PACKAGE
+  ESIM
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  phone     String   @unique
+  email     String?  @unique
+  password  String
+  role      Role     @default(USER)
+  orders    Order[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SimNumber {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  number    String      @unique
+  type      SimType
+  pattern   String?
+  price     Int
+  oldPrice  Int?
+  desc      String?
+  status    SimStatus   @default(AVAILABLE)
+  orders    OrderItem[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Package {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  type       PackageType
+  data       String
+  unit       String?
+  days       Int
+  price      Int
+  speed      String?
+  bestFor    String[]
+  isPopular  Boolean     @default(false)
+  status     Status      @default(ACTIVE)
+  orderItems OrderItem[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
+model Promotion {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  discount  String
+  startDate DateTime
+  endDate   DateTime
+  used      Int      @default(0)
+  status    Status   @default(ACTIVE)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
+  code          String       @unique
+  userId        String       @db.ObjectId
+  user          User         @relation(fields: [userId], references: [id])
+  items         OrderItem[]
+  totalAmount   Int
+  customerName  String
+  customerPhone String
+  address       String?
+  deliveryType  DeliveryType
+  paymentType   PaymentType
+  status        OrderStatus  @default(PENDING)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model OrderItem {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  orderId   String     @db.ObjectId
+  order     Order      @relation(fields: [orderId], references: [id])
+
+  simId     String?    @db.ObjectId
+  sim       SimNumber? @relation(fields: [simId], references: [id])
+
+  packageId String?    @db.ObjectId
+  package   Package?   @relation(fields: [packageId], references: [id])
+
+  itemType  ItemType
+  name      String
+  price     Int
+}

@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unitel Smart Connect — Laos</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#E5001B;--red-dark:#B8001A;--red-light:#FF1A35;
+  --orange:#FF6B2B;--amber:#FFAA00;
+  --bg:#FAFAFA;--bg2:#F4F4F6;--bg3:#EEEEF2;
+  --white:#FFFFFF;
+  --ink:#0D0D14;--ink2:#3A3A4A;--ink3:#7A7A8C;--ink4:#ADADBD;
+  --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.12);
+  --s1:0 1px 3px rgba(0,0,0,0.06),0 0 0 1px rgba(0,0,0,0.04);
+  --s2:0 4px 16px rgba(0,0,0,0.08),0 1px 3px rgba(0,0,0,0.05);
+  --s3:0 12px 40px rgba(0,0,0,0.12),0 3px 10px rgba(0,0,0,0.06);
+  --sr:0 8px 32px rgba(229,0,27,0.18);
+  --r:10px;--rl:16px;--rxl:24px;
+  --font:'DM Sans',sans-serif;--fdisplay:'Syne',sans-serif;
+  --nav:60px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);overflow-x:hidden;font-size:15px;line-height:1.6}
+
+/* ── UTILS ── */
+.page{display:none}.page.on{display:block}
+.hidden{display:none!important}
+h1,h2,h3,h4{font-family:var(--fdisplay);line-height:1.2}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font);cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:var(--font)}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ══════════════════════════════
+   NAV
+══════════════════════════════ */
+nav{
+  position:sticky;top:0;z-index:200;height:var(--nav);
+  background:rgba(250,250,250,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-w{max-width:1280px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--fdisplay);font-weight:800;font-size:17px;color:var(--red);cursor:pointer;flex-shrink:0}
+.logo-mark{width:32px;height:32px;background:var(--red);border-radius:8px;display:grid;place-items:center;color:#fff;font-size:14px;font-weight:900;letter-spacing:-0.5px}
+.nav-links{display:flex;align-items:center;gap:2px;flex:1}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--ink3);padding:6px 11px;border-radius:8px;cursor:pointer;transition:.15s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.act{color:var(--red);background:rgba(229,0,27,0.06)}
+.nav-r{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-cart{position:relative;width:36px;height:36px;border-radius:9px;background:var(--bg2);border:1px solid var(--border);display:grid;place-items:center;cursor:pointer;font-size:15px;transition:.15s}
+.nav-cart:hover{border-color:var(--red)}
+.cart-dot{position:absolute;top:-4px;right:-4px;width:17px;height:17px;background:var(--red);border-radius:50%;font-size:9px;font-weight:800;color:#fff;display:grid;place-items:center;border:2px solid var(--bg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:8px 18px;border-radius:9px;font-size:13.5px;font-weight:600;cursor:pointer;transition:.2s;border:none;white-space:nowrap}
+.btn-ghost{background:none;border:1.5px solid var(--border2);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--red);color:var(--red)}
+.btn-red{background:var(--red);color:#fff;box-shadow:var(--sr)}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-1px)}
+.btn-outline-red{background:none;border:1.5px solid var(--red);color:var(--red)}
+.btn-outline-red:hover{background:var(--red);color:#fff}
+.btn-sm{padding:6px 14px;font-size:12.5px;border-radius:8px}
+.btn-lg{padding:13px 28px;font-size:15px;border-radius:11px}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+.hero{
+  padding:72px 24px 60px;
+  background:linear-gradient(135deg,#FFF5F6 0%,#FAFAFA 55%,#FFF8F2 100%);
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;right:-120px;top:-80px;
+  width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(229,0,27,.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-w{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 480px;gap:48px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(229,0,27,0.08);border:1px solid rgba(229,0,27,0.15);padding:5px 13px;border-radius:100px;font-size:12px;font-weight:700;color:var(--red);margin-bottom:22px;letter-spacing:.03em}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--red);border-radius:50%;animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(34px,4.5vw,58px);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero-sub{font-size:16.5px;color:var(--ink2);line-height:1.75;max-width:500px;margin-bottom:36px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.hero-stats{display:flex;gap:32px}
+.hstat .n{font-family:var(--fdisplay);font-size:26px;font-weight:800;color:var(--ink)}
+.hstat .l{font-size:12px;color:var(--ink3);margin-top:2px}
+
+/* Hero visual */
+.hero-vis{position:relative;display:flex;justify-content:center;align-items:center;min-height:380px}
+.phone-frame{
+  width:200px;height:380px;background:#1A1A2E;border-radius:34px;
+  padding:10px;box-shadow:0 32px 80px rgba(0,0,0,0.22),0 0 0 1px rgba(255,255,255,.06);
+  position:relative;z-index:2;flex-shrink:0;
+}
+.phone-inner{
+  width:100%;height:100%;border-radius:26px;overflow:hidden;
+  background:linear-gradient(160deg,var(--red) 0%,#FF5722 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;
+}
+.phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:60px;height:5px;background:rgba(255,255,255,.15);border-radius:3px}
+.ph-brand{font-family:var(--fdisplay);font-size:18px;font-weight:800;color:#fff;letter-spacing:2px}
+.ph-num{font-family:var(--fdisplay);font-size:22px;font-weight:800;color:#fff;letter-spacing:3px;text-align:center}
+.ph-tag{background:rgba(255,255,255,.2);color:#fff;font-size:11px;font-weight:700;padding:5px 13px;border-radius:100px}
+.ph-pkg{background:rgba(0,0,0,.2);border-radius:12px;padding:12px;width:100%;text-align:center}
+.ph-pkg .d{font-size:10px;color:rgba(255,255,255,.6);margin-bottom:4px}
+.ph-pkg .v{font-size:18px;font-weight:800;color:#fff;font-family:var(--fdisplay)}
+
+.float-card{
+  position:absolute;background:#fff;border-radius:var(--rl);box-shadow:var(--s3);padding:14px 16px;
+  animation:float 4s ease-in-out infinite;
+}
+.float-card.fc1{top:20px;right:-20px;animation-delay:0s}
+.float-card.fc2{bottom:60px;left:-30px;animation-delay:1.5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fc1 .label{font-size:10px;color:var(--ink3);font-weight:600;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em}
+.fc1 .val{font-family:var(--fdisplay);font-size:16px;font-weight:800;color:var(--red)}
+.fc2 .ai-row{display:flex;align-items:center;gap:8px}
+.fc2 .ai-icon{width:28px;height:28px;background:linear-gradient(135deg,var(--red),var(--orange));border-radius:8px;display:grid;place-items:center;font-size:13px;color:#fff}
+.fc2 .ai-text .t{font-size:12px;font-weight:700}
+.fc2 .ai-text .s{font-size:10px;color:var(--ink3)}
+
+/* ══════════════════════════════
+   QUICK SEARCH BAND
+══════════════════════════════ */
+.qsearch{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 24px}
+.qsearch-w{max-width:1280px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.qsearch-box{
+  flex:1;display:flex;align-items:center;gap:0;
+  background:var(--bg2);border:1.5px solid var(--border2);border-radius:12px;
+  overflow:hidden;transition:.2s;
+}
+.qsearch-box:focus-within{border-color:var(--red);box-shadow:0 0 0 3px rgba(229,0,27,.08)}
+.qsearch-box .qs-icon{padding:0 14px;font-size:16px;color:var(--ink3)}
+.qsearch-box input{flex:1;border:none;background:none;outline:none;padding:12px 0;font-size:14.5px;color:var(--ink)}
+.qsearch-box input::placeholder{color:var(--ink4)}
+.filter-chips{display:flex;gap:7px;flex-shrink:0}
+.chip{padding:7px 14px;border-radius:8px;font-size:12.5px;font-weight:600;border:1.5px solid var(--border2);color:var(--ink3);cursor:pointer;transition:.15s;background:#fff}
+.chip:hover,.chip.on{background:rgba(229,0,27,.07);border-color:rgba(229,0,27,.25);color:var(--red)}
+
+/* ══════════════════════════════
+   SECTION WRAPPER
+══════════════════════════════ */
+.sec{padding:60px 24px}
+.sec-w{max-width:1280px;margin:0 auto}
+.sec-alt{background:var(--bg2)}
+.sec-head{margin-bottom:36px}
+.sec-tag{display:inline-block;background:rgba(229,0,27,.08);color:var(--red);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:10px}
+.sec-title{font-size:clamp(24px,2.8vw,34px);font-weight:800;color:var(--ink);margin-bottom:8px}
+.sec-sub{font-size:15px;color:var(--ink2)}
+.sec-head.row{display:flex;justify-content:space-between;align-items:flex-end}
+
+/* ══════════════════════════════
+   NUMBER CARDS
+══════════════════════════════ */
+.numbers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.ncard{
+  background:#fff;border:1px solid var(--border);border-radius:var(--rl);
+  padding:20px;box-shadow:var(--s1);cursor:pointer;transition:.22s;
+  position:relative;overflow:hidden;
+}
+.ncard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--red),var(--orange));
+  transform:scaleX(0);transform-origin:left;transition:.3s;
+}
+.ncard:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.ncard:hover::before{transform:scaleX(1)}
+.ncard-tag{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:100px;margin-bottom:12px}
+.tag-vip{background:rgba(229,0,27,.09);color:var(--red)}
+.tag-lucky{background:rgba(255,170,0,.1);color:#B87A00}
+.tag-easy{background:rgba(0,160,80,.09);color:#007040}
+.tag-premium{background:rgba(100,50,200,.09);color:#5A2CB0}
+.tag-hot{background:rgba(255,107,43,.1);color:#C94400}
+.ncard-num{font-family:var(--fdisplay);font-size:24px;font-weight:800;letter-spacing:2px;color:var(--ink);margin-bottom:5px}
+.ncard-pattern{font-size:11.5px;color:var(--ink3);margin-bottom:14px}
+.ncard-price .old{font-size:12px;color:var(--ink4);text-decoration:line-through}
+.ncard-price .new{font-family:var(--fdisplay);font-size:20px;font-weight:800;color:var(--red)}
+.ncard-price .cur{font-size:12px;color:var(--ink3)}
+.ncard-btns{display:flex;gap:7px;margin-top:14px}
+.ncard-btns .btn{flex:1;font-size:12px;padding:8px 0}
+
+/* ══════════════════════════════
+   PACKAGE CARDS
+══════════════════════════════ */
+.pkg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.pkgcard{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--rxl);
+  padding:26px;box-shadow:var(--s1);transition:.22s;position:relative;
+}
+.pkgcard.featured{border-color:var(--red);box-shadow:0 8px 32px rgba(229,0,27,.14)}
+.pkgcard:hover{transform:translateY(-4px);box-shadow:var(--s3)}
+.pop-badge{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--red);color:#fff;font-size:11px;font-weight:800;
+  padding:4px 14px;border-radius:100px;white-space:nowrap;
+}
+.pkg-label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.pkg-type-tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;background:var(--bg2);color:var(--ink3)}
+.pkg-name{font-family:var(--fdisplay);font-size:20px;font-weight:800;margin-bottom:4px}
+.pkg-data{font-family:var(--fdisplay);font-size:40px;font-weight:900;line-height:1;color:var(--ink);margin-bottom:2px}
+.pkg-data span{font-size:18px;font-weight:500;color:var(--ink3)}
+.pkg-dur{font-size:12.5px;color:var(--ink3);margin-bottom:18px}
+.pkg-price{font-family:var(--fdisplay);font-size:26px;font-weight:800;color:var(--red);margin-bottom:18px}
+.pkg-price sup{font-size:14px}
+.pkg-price .lak{font-size:12px;font-weight:500;color:var(--ink3)}
+.pkg-feats{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:7px}
+.pkg-feats li{font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:8px}
+.pkg-feats li::before{content:'✓';color:#00A855;font-weight:800;font-size:12px}
+.pkg-use{font-size:12px;color:var(--ink3);border-top:1px solid var(--border);padding-top:14px;margin-bottom:16px}
+
+/* ══════════════════════════════
+   TABS
+══════════════════════════════ */
+.tab-strip{display:flex;gap:5px;margin-bottom:28px;flex-wrap:wrap}
+.tab-btn{padding:8px 18px;border-radius:9px;font-size:13px;font-weight:600;color:var(--ink3);background:var(--bg2);border:1.5px solid transparent;cursor:pointer;transition:.15s}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.on{background:#fff;color:var(--red);border-color:rgba(229,0,27,.2);box-shadow:var(--s1)}
+
+/* ══════════════════════════════
+   AI FINDER
+══════════════════════════════ */
+.ai-finder{background:#fff;border-radius:var(--rxl);box-shadow:var(--s3);padding:40px;max-width:720px;margin:0 auto}
+.ai-progress{display:flex;gap:8px;margin-bottom:36px;align-items:center}
+.ai-step{height:4px;flex:1;background:var(--bg3);border-radius:2px;transition:.4s}
+.ai-step.done{background:var(--red)}
+.ai-step.current{background:linear-gradient(90deg,var(--red),var(--orange))}
+.ai-q{font-family:var(--fdisplay);font-size:22px;font-weight:800;margin-bottom:8px}
+.ai-qs{font-size:14px;color:var(--ink3);margin-bottom:28px}
+.ai-choices{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.ai-choice{
+  background:var(--bg2);border:2px solid transparent;border-radius:var(--rl);
+  padding:18px 14px;text-align:center;cursor:pointer;transition:.2s;
+}
+.ai-choice:hover{border-color:rgba(229,0,27,.3);background:#fff}
+.ai-choice.sel{border-color:var(--red);background:rgba(229,0,27,.04)}
+.ai-choice .ic{font-size:28px;margin-bottom:8px}
+.ai-choice .lbl{font-size:13px;font-weight:600}
+.ai-choice .sub{font-size:11px;color:var(--ink3);margin-top:3px}
+.ai-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px}
+.ai-step-label{font-size:12.5px;color:var(--ink3)}
+
+/* AI Result */
+.ai-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.ai-result-card{
+  background:#fff;border:2px solid var(--border);border-radius:var(--rxl);
+  padding:24px;transition:.2s;cursor:pointer;
+}
+.ai-result-card.best{border-color:var(--red);box-shadow:0 8px 28px rgba(229,0,27,.12)}
+.ai-result-card:hover{transform:translateY(-3px);box-shadow:var(--s3)}
+.match-bar{height:5px;background:var(--bg3);border-radius:3px;margin:8px 0 4px}
+.match-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--red),var(--orange))}
+.match-pct{font-size:12px;font-weight:700;color:var(--red)}
+.ai-why{font-size:12px;color:var(--ink3);line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+
+/* ══════════════════════════════
+   ESIM PAGE
+══════════════════════════════ */
+.esim-hero{
+  background:linear-gradient(135deg,#0D0D14 0%,#1A0A0F 100%);
+  padding:60px 24px;text-align:center;color:#fff;
+}
+.esim-hero h1{font-size:clamp(28px,4vw,50px);font-weight:800;margin-bottom:16px}
+.esim-hero h1 span{color:var(--orange)}
+.esim-steps{display:flex;justify-content:center;gap:0;max-width:700px;margin:40px auto 0}
+.esim-step{flex:1;text-align:center;padding:24px 16px;position:relative}
+.esim-step::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:18px;color:rgba(255,255,255,.3)}
+.esim-step:last-child::after{display:none}
+.esim-step .num{width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:grid;place-items:center;font-family:var(--fdisplay);font-size:18px;font-weight:800;color:#fff;margin:0 auto 10px}
+.esim-step .t{font-size:14px;font-weight:600;color:#fff}
+.esim-step .s{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px}
+.esim-pkgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.esim-card{background:#fff;border:1px solid var(--border);border-radius:var(--rl);padding:22px;box-shadow:var(--s1);transition:.2s}
+.esim-card:hover{transform:translateY(-3px);box-shadow:var(--s3)}
+.esim-flag{font-size:28px;margin-bottom:10px}
+.esim-name{font-family:var(--fdisplay);font-size:18px;font-weight:800;margin-bottom:4px}
+.esim-meta{font-size:13px;color:var(--ink3);margin-bottom:14px}
+.esim-price{font-family:var(--fdisplay);font-size:22px;font-weight:800;color:var(--red);margin-bottom:14px}
+
+/* ══════════════════════════════
+   SHOP PAGE
+══════════════════════════════ */
+.shop-layout{display:grid;grid-template-columns:250px 1fr;gap:24px;align-items:start}
+.filter-panel{background:#fff;border:1px solid var(--border);border-radius:var(--rl);padding:20px;box-shadow:var(--s1);position:sticky;top:calc(var(--nav) + 16px)}
+.filter-section{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.filter-section:last-child{border:none;margin:0;padding:0}
+.filter-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin-bottom:12px}
+.filter-check{display:flex;align-items:center;gap:9px;padding:5px 0;cursor:pointer;font-size:13.5px;color:var(--ink2)}
+.filter-check input{accent-color:var(--red);width:14px;height:14px}
+.price-range{display:flex;flex-direction:column;gap:10px}
+.price-range input[type=range]{accent-color:var(--red);width:100%}
+.price-display{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink3)}
+.shop-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.result-count{font-size:13.5px;color:var(--ink3)}
+.sort-sel{padding:7px 12px;border:1.5px solid var(--border2);border-radius:9px;font-size:13px;color:var(--ink2);background:#fff;cursor:pointer}
+
+/* ══════════════════════════════
+   NUMBER DETAIL
+══════════════════════════════ */
+.detail-hero{background:linear-gradient(135deg,#FFF5F6,#FFF);padding:48px 24px}
+.detail-w{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
+.detail-number{font-family:var(--fdisplay);font-size:clamp(38px,6vw,72px);font-weight:900;letter-spacing:4px;color:var(--ink);margin-bottom:8px}
+.detail-meaning{background:rgba(229,0,27,.05);border-left:3px solid var(--red);padding:14px 18px;border-radius:0 10px 10px 0;font-size:14px;color:var(--ink2);margin:20px 0}
+.detail-sticky{background:#fff;border:1px solid var(--border);border-radius:var(--rxl);padding:28px;box-shadow:var(--s3);position:sticky;top:calc(var(--nav) + 20px)}
+.detail-price-big{font-family:var(--fdisplay);font-size:38px;font-weight:900;color:var(--red);margin-bottom:6px}
+.detail-info-row{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.dinfo-chip{padding:5px 12px;background:var(--bg2);border-radius:8px;font-size:12px;font-weight:600;color:var(--ink2)}
+.avail-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:rgba(0,168,84,.1);color:#00703C;border-radius:8px;font-size:12.5px;font-weight:700;margin-bottom:18px}
+.avail-badge::before{content:'';width:7px;height:7px;background:#00A854;border-radius:50%}
+
+/* ══════════════════════════════
+   CART
+══════════════════════════════ */
+.cart-layout{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start;max-width:1280px;margin:0 auto;padding:40px 24px}
+.cart-items{background:#fff;border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:var(--s1)}
+.cart-item{display:flex;align-items:center;gap:16px;padding:18px 20px;border-bottom:1px solid var(--border)}
+.cart-item:last-child{border:none}
+.ci-icon{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--red),var(--orange));display:grid;place-items:center;color:#fff;font-size:20px;flex-shrink:0}
+.ci-info{flex:1}
+.ci-name{font-weight:700;font-size:15px;margin-bottom:3px}
+.ci-type{font-size:12px;color:var(--ink3)}
+.ci-price{font-family:var(--fdisplay);font-size:17px;font-weight:800;color:var(--red)}
+.ci-remove{color:var(--ink4);font-size:18px;cursor:pointer;padding:4px;transition:.15s;background:none;border:none}
+.ci-remove:hover{color:var(--red)}
+.order-summary{background:#fff;border:1px solid var(--border);border-radius:var(--rl);padding:24px;box-shadow:var(--s1)}
+.os-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:14px}
+.os-row.total{border-top:1.5px solid var(--border);padding-top:16px;margin-top:8px}
+.os-row.total .k{font-weight:700;font-size:16px}
+.os-row.total .v{font-family:var(--fdisplay);font-size:22px;font-weight:900;color:var(--red)}
+.upsell{background:var(--bg2);border-radius:var(--r);padding:16px;margin-top:16px}
+.upsell-title{font-size:12px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+
+/* ══════════════════════════════
+   CHECKOUT
+══════════════════════════════ */
+.checkout-w{max-width:860px;margin:0 auto;padding:40px 24px}
+.checkout-steps{display:flex;gap:0;margin-bottom:36px}
+.cstep{flex:1;display:flex;align-items:center;gap:0}
+.cstep-dot{width:32px;height:32px;border-radius:50%;background:var(--bg3);display:grid;place-items:center;font-size:13px;font-weight:800;color:var(--ink3);flex-shrink:0;transition:.3s}
+.cstep-dot.done{background:var(--red);color:#fff}
+.cstep-dot.current{background:var(--red);color:#fff;box-shadow:0 0 0 4px rgba(229,0,27,.15)}
+.cstep-line{flex:1;height:2px;background:var(--bg3);margin:0 8px;transition:.3s}
+.cstep-line.done{background:var(--red)}
+.cstep-label{font-size:11.5px;font-weight:600;color:var(--ink3);margin-top:6px;white-space:nowrap}
+.step-wrap{display:none}.step-wrap.on{display:block}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{margin-bottom:16px}
+.fg label{font-size:12.5px;font-weight:700;color:var(--ink2);display:block;margin-bottom:6px}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:11px 14px;border:1.5px solid var(--border2);
+  border-radius:10px;font-size:14px;color:var(--ink);outline:none;
+  transition:.15s;background:#fff;
+}
+.fg input:focus,.fg select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(229,0,27,.08)}
+.delivery-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.delivery-opt{
+  border:2px solid var(--border);border-radius:var(--rl);padding:16px;cursor:pointer;transition:.2s;
+  display:flex;align-items:center;gap:12px;
+}
+.delivery-opt:hover,.delivery-opt.sel{border-color:var(--red)}
+.delivery-opt.sel{background:rgba(229,0,27,.03)}
+.do-icon{width:40px;height:40px;background:var(--bg2);border-radius:10px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+.pay-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.pay-opt{border:2px solid var(--border);border-radius:var(--rl);padding:14px 16px;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:10px}
+.pay-opt:hover,.pay-opt.sel{border-color:var(--red)}
+.pay-opt.sel{background:rgba(229,0,27,.03)}
+
+/* Order Success */
+.success-page{text-align:center;padding:60px 24px;max-width:500px;margin:0 auto}
+.success-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--red),var(--orange));border-radius:50%;display:grid;place-items:center;font-size:36px;margin:0 auto 24px;box-shadow:var(--sr)}
+.success-page h1{font-size:32px;font-weight:800;margin-bottom:12px}
+.order-num-box{background:var(--bg2);border-radius:12px;padding:16px 24px;margin:24px 0;font-family:var(--fdisplay);font-size:22px;font-weight:800;color:var(--red)}
+
+/* ══════════════════════════════
+   USER DASHBOARD
+══════════════════════════════ */
+.dash-layout{display:grid;grid-template-columns:240px 1fr;gap:0;min-height:calc(100vh - var(--nav))}
+.sidebar{background:#fff;border-right:1px solid var(--border);padding:24px 16px;display:flex;flex-direction:column;gap:4px}
+.sidebar-label{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink4);padding:8px 12px 4px;margin-top:8px}
+.slink{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:var(--ink2);cursor:pointer;transition:.15s}
+.slink:hover{background:var(--bg2);color:var(--ink)}
+.slink.on{background:rgba(229,0,27,.07);color:var(--red);font-weight:600}
+.slink .icon{font-size:16px;width:20px;text-align:center}
+.dash-content{background:var(--bg);padding:28px;overflow-y:auto}
+.dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.dash-head h1{font-size:22px;font-weight:800}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat-tile{background:#fff;border:1px solid var(--border);border-radius:var(--rl);padding:18px;box-shadow:var(--s1)}
+.stat-tile .label{font-size:12px;color:var(--ink3);margin-bottom:8px}
+.stat-tile .value{font-family:var(--fdisplay);font-size:26px;font-weight:800}
+.stat-tile .change{font-size:12px;color:#00A050;margin-top:4px}
+.stat-tile .change.down{color:#CC2200}
+.panel{background:#fff;border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:var(--s1);margin-bottom:20px}
+.panel-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.panel-head h3{font-size:15px;font-weight:700}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--bg2);padding:10px 16px;text-align:left;font-size:11px;font-weight:800;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
+tbody tr{border-bottom:1px solid var(--border);transition:.1s}
+tbody tr:last-child{border:none}
+tbody tr:hover{background:var(--bg2)}
+tbody td{padding:13px 16px;font-size:13.5px;color:var(--ink2)}
+.status{display:inline-flex;padding:3px 9px;border-radius:100px;font-size:11px;font-weight:700}
+.s-completed,.s-active{background:rgba(0,168,84,.1);color:#00703C}
+.s-pending{background:rgba(255,170,0,.1);color:#9B6600}
+.s-processing{background:rgba(0,100,255,.09);color:#003C9B}
+.s-cancelled{background:rgba(220,0,0,.08);color:#8B0000}
+.s-available{background:rgba(0,168,84,.1);color:#00703C}
+.s-sold{background:rgba(220,0,0,.08);color:#8B0000}
+.s-reserved{background:rgba(255,170,0,.1);color:#9B6600}
+
+/* ══════════════════════════════
+   ADMIN SPECIFIC
+══════════════════════════════ */
+.admin-badge{
+  position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
+  background:var(--ink);color:#fff;padding:8px 20px;border-radius:100px;
+  font-size:12.5px;font-weight:600;z-index:300;pointer-events:none;
+  display:flex;align-items:center;gap:8px;
+}
+.admin-badge .dot{width:8px;height:8px;background:var(--orange);border-radius:50%;animation:blink 1.5s infinite}
+.chart-bar-wrap{display:flex;align-items:flex-end;gap:8px;height:120px;padding:12px 16px 0}
+.chart-bar{flex:1;background:linear-gradient(180deg,var(--red),rgba(229,0,27,.3));border-radius:4px 4px 0 0;position:relative;min-width:20px;cursor:pointer;transition:.2s}
+.chart-bar:hover{filter:brightness(1.1)}
+.chart-bar .tip{position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:10px;padding:3px 7px;border-radius:5px;white-space:nowrap;opacity:0;transition:.15s}
+.chart-bar:hover .tip{opacity:1}
+.chart-labels{display:flex;gap:8px;padding:6px 16px;border-top:1px solid var(--border)}
+.chart-label{flex:1;text-align:center;font-size:10.5px;color:var(--ink3);min-width:20px}
+.form-modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);
+  backdrop-filter:blur(4px);z-index:500;align-items:center;justify-content:center;
+}
+.form-modal-overlay.on{display:flex}
+.form-modal{background:#fff;border-radius:var(--rxl);padding:32px;width:520px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:var(--s3);position:relative}
+.form-modal h2{font-size:20px;font-weight:800;margin-bottom:20px}
+.modal-close-btn{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:16px;color:var(--ink2)}
+.action-btn{font-size:12px;font-weight:600;color:var(--red);cursor:pointer;background:none;border:none;padding:3px 8px;border-radius:6px;transition:.15s}
+.action-btn:hover{background:rgba(229,0,27,.08)}
+.action-btn.del{color:var(--ink3)}
+.action-btn.del:hover{color:var(--red);background:rgba(229,0,27,.06)}
+
+/* ══════════════════════════════
+   PROMO BANNERS
+══════════════════════════════ */
+.promo-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
+.promo-card{border-radius:var(--rxl);padding:28px;position:relative;overflow:hidden;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;transition:.2s}
+.promo-card:hover{transform:translateY(-3px)}
+.pc1{background:linear-gradient(135deg,var(--red),#FF3D5A)}
+.pc2{background:linear-gradient(135deg,#0D0D14,#2D1A4E)}
+.pc3{background:linear-gradient(135deg,var(--orange),var(--amber))}
+.promo-deco{position:absolute;right:-10px;top:-10px;font-size:90px;opacity:.1;transform:rotate(15deg)}
+.promo-eyebrow{font-size:11px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.promo-big{font-family:var(--fdisplay);font-size:clamp(26px,4vw,50px);font-weight:900;color:#fff;line-height:1}
+.promo-sub{font-size:12.5px;color:rgba(255,255,255,.75);margin-top:6px}
+.promo-cta{display:inline-block;margin-top:14px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:100px;cursor:pointer;transition:.15s}
+.promo-cta:hover{background:rgba(255,255,255,.3)}
+
+/* ══════════════════════════════
+   AUTH
+══════════════════════════════ */
+.auth-wrap{max-width:440px;margin:60px auto;padding:0 24px}
+.auth-card{background:#fff;border:1px solid var(--border);border-radius:var(--rxl);padding:36px;box-shadow:var(--s3)}
+.auth-logo{display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:28px;font-family:var(--fdisplay);font-size:20px;font-weight:800;color:var(--red)}
+.auth-tabs{display:flex;background:var(--bg2);padding:3px;border-radius:10px;margin-bottom:24px}
+.auth-tab{flex:1;padding:9px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--ink3);text-align:center;cursor:pointer;transition:.15s}
+.auth-tab.on{background:#fff;color:var(--ink);box-shadow:var(--s1)}
+.auth-form{display:none}.auth-form.on{display:block}
+
+/* ══════════════════════════════
+   TOAST
+══════════════════════════════ */
+.toast{
+  position:fixed;bottom:24px;right:24px;
+  background:var(--ink);color:#fff;
+  padding:12px 20px;border-radius:12px;
+  font-size:14px;font-weight:500;z-index:9999;
+  transform:translateY(60px);opacity:0;
+  transition:.3s cubic-bezier(.4,0,.2,1);
+  display:flex;align-items:center;gap:8px;
+  box-shadow:var(--s3);max-width:320px;
+}
+.toast.in{transform:translateY(0);opacity:1}
+
+/* ══════════════════════════════
+   MISC
+══════════════════════════════ */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.why-card{background:#fff;border:1px solid var(--border);border-radius:var(--rl);padding:22px;box-shadow:var(--s1)}
+.why-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:20px;margin-bottom:12px}
+.wi-red{background:rgba(229,0,27,.08)}
+.wi-blue{background:rgba(0,100,255,.07)}
+.wi-green{background:rgba(0,168,84,.07)}
+.wi-orange{background:rgba(255,107,43,.08)}
+.wi-purple{background:rgba(100,50,200,.07)}
+.why-card h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.why-card p{font-size:12.5px;color:var(--ink3);line-height:1.6}
+.empty-state{text-align:center;padding:60px 20px;color:var(--ink3)}
+.empty-icon{font-size:48px;margin-bottom:12px}
+.compare-table-wrap{overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse}
+.compare-table th,.compare-table td{padding:12px 16px;border:1px solid var(--border);font-size:13px}
+.compare-table th{background:var(--bg2);font-weight:700}
+.compare-table .highlight{background:rgba(229,0,27,.04);font-weight:600;color:var(--red)}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{padding:16px 0;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'↓';transition:.3s;color:var(--ink3)}
+.faq-q.open::after{transform:rotate(180deg);color:var(--red)}
+.faq-a{display:none;padding:0 0 16px;font-size:14px;color:var(--ink2);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+</head>
+<body>
+
+<!-- ══════ NAV ══════ -->
+<nav>
+<div class="nav-w">
+  <div class="logo" onclick="go('home')">
+    <div class="logo-mark">U</div>
+    Unitel Smart Connect
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a onclick="go('home')" data-page="home" class="act">Home</a>
+    <a onclick="go('shop')" data-page="shop">SIM Numbers</a>
+    <a onclick="go('packages')" data-page="packages">Packages</a>
+    <a onclick="go('ai-finder')" data-page="ai-finder">✦ AI Finder</a>
+    <a onclick="go('esim')" data-page="esim">eSIM Tourist</a>
+    <a onclick="go('support')" data-page="support">Support</a>
+  </div>
+  <div class="nav-r">
+    <div class="nav-cart" onclick="go('cart')" title="Cart">
+      🛒<span class="cart-dot" id="cartDot">0</span>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="go('login')">Login</button>
+    <button class="btn btn-red btn-sm" onclick="go('register')">Register</button>
+  </div>
+</div>
+</nav>
+
+<!-- ════════════════════════════════════════════
+  PAGE: HOME
+════════════════════════════════════════════ -->
+<div class="page on" id="page-home">
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-w">
+  <div>
+    <div class="hero-eyebrow">New — AI Package Finder is live</div>
+    <h1>Find <em>SIM, eSIM</em> &<br>Internet Packages<br>Smarter</h1>
+    <p class="hero-sub">ค้นหาเบอร์สวย สมัครแพ็กเกจเน็ต และให้ AI แนะนำแพ็กเกจที่เหมาะกับคุณในไม่กี่คลิก</p>
+    <div class="hero-actions">
+      <button class="btn btn-red btn-lg" onclick="go('shop')">🔍 Find Number</button>
+      <button class="btn btn-ghost btn-lg" onclick="go('ai-finder')">✦ Try AI Recommendation</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="n">5M+</div><div class="l">Subscribers</div></div>
+      <div class="hstat"><div class="n">18</div><div class="l">Provinces</div></div>
+      <div class="hstat"><div class="n">5G</div><div class="l">Network</div></div>
+      <div class="hstat"><div class="n">AI</div><div class="l">Smart Recommends</div></div>
+    </div>
+  </div>
+  <div class="hero-vis">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-inner">
+        <div class="ph-brand">UNITEL</div>
+        <div class="ph-num">020 8888 9999</div>
+        <div class="ph-tag">✦ VIP Premium</div>
+        <div class="ph-pkg">
+          <div class="d">Current Package</div>
+          <div class="v">5G Unlimited</div>
+        </div>
+      </div>
+    </div>
+    <div class="float-card fc1">
+      <div class="label">🔥 Just Reserved</div>
+      <div class="val">020 5555 5555</div>
+      <div style="font-size:10px;color:var(--ink3);margin-top:3px">1 min ago</div>
+    </div>
+    <div class="float-card fc2">
+      <div class="ai-row">
+        <div class="ai-icon">✦</div>
+        <div class="ai-text">
+          <div class="t">AI Recommends</div>
+          <div class="s">Social Max 30GB — 94% match</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- QUICK SEARCH -->
+<div class="qsearch">
+<div class="qsearch-w">
+  <div class="qsearch-box">
+    <span class="qs-icon">🔍</span>
+    <input type="text" id="homeSearch" placeholder="Search lucky number: 888, 999, 456, 020..." onkeydown="if(event.key==='Enter')doSearch()">
+  </div>
+  <div class="filter-chips">
+    <div class="chip on" onclick="filterType(this,'all')">All</div>
+    <div class="chip" onclick="filterType(this,'vip')">👑 VIP</div>
+    <div class="chip" onclick="filterType(this,'lucky')">🍀 Lucky</div>
+    <div class="chip" onclick="filterType(this,'easy')">🎯 Easy</div>
+    <div class="chip" onclick="filterType(this,'premium')">💎 Premium</div>
+  </div>
+  <button class="btn btn-red" onclick="doSearch()">Search</button>
+</div>
+</div>
+
+<!-- POPULAR NUMBERS -->
+<section class="sec">
+<div class="sec-w">
+  <div class="sec-head row">
+    <div>
+      <div class="sec-tag">Hot Numbers</div>
+      <div class="sec-title">Popular SIM Numbers</div>
+      <div class="sec-sub">Handpicked premium numbers — reserve before they're gone</div>
+    </div>
+    <button class="btn btn-ghost" onclick="go('shop')">View All →</button>
+  </div>
+  <div class="numbers-grid" id="homeNumGrid"></div>
+</div>
+</section>
+
+<!-- PACKAGES PREVIEW -->
+<section class="sec sec-alt">
+<div class="sec-w">
+  <div class="sec-head row">
+    <div>
+      <div class="sec-tag">Internet</div>
+      <div class="sec-title">Internet Packages</div>
+      <div class="sec-sub">High-speed data plans for every lifestyle</div>
+    </div>
+    <button class="btn btn-ghost" onclick="go('packages')">All Packages →</button>
+  </div>
+  <div class="pkg-grid" id="homePkgGrid"></div>
+</div>
+</section>
+
+<!-- PROMOS -->
+<section class="sec">
+<div class="sec-w">
+  <div class="sec-head"><div class="sec-tag">Deals</div><div class="sec-title">Exclusive Promotions</div></div>
+  <div class="promo-grid">
+    <div class="promo-card pc1">
+      <div class="promo-deco">%</div>
+      <div class="promo-eyebrow">Limited Time</div>
+      <div class="promo-big">50% OFF</div>
+      <div class="promo-sub">All VIP & Lucky numbers this month</div>
+      <div class="promo-cta" onclick="go('shop')">Grab Deal →</div>
+    </div>
+    <div class="promo-card pc2">
+      <div class="promo-deco">📦</div>
+      <div class="promo-eyebrow">Free Delivery</div>
+      <div class="promo-big">Free SIM<br>Delivery</div>
+      <div class="promo-sub">Nationwide delivery</div>
+      <div class="promo-cta">Order Now →</div>
+    </div>
+    <div class="promo-card pc3">
+      <div class="promo-deco">🎁</div>
+      <div class="promo-eyebrow">Bonus</div>
+      <div class="promo-big">+10GB<br>Bonus</div>
+      <div class="promo-sub">On MEGA & ULTRA plans</div>
+      <div class="promo-cta" onclick="go('packages')">Activate →</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- AI PROMO -->
+<section class="sec sec-alt">
+<div class="sec-w" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center">
+  <div>
+    <div class="sec-tag">AI-Powered</div>
+    <div class="sec-title">Not sure which package?<br>Let AI decide for you</div>
+    <p style="color:var(--ink2);font-size:15px;line-height:1.75;margin:16px 0 24px">ตอบคำถาม 4 ข้อ แล้วให้ AI วิเคราะห์ว่าแพ็กเกจไหนเหมาะกับพฤติกรรมการใช้งานของคุณที่สุด</p>
+    <button class="btn btn-red btn-lg" onclick="go('ai-finder')">✦ Start AI Finder</button>
+  </div>
+  <div style="background:linear-gradient(135deg,#0D0D14,#1A0A14);border-radius:var(--rxl);padding:28px;color:#fff">
+    <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">AI Result Preview</div>
+    <div style="background:rgba(255,255,255,.07);border-radius:14px;padding:18px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-family:var(--fdisplay);font-size:16px;font-weight:800">Social Max 30GB</div>
+        <div style="font-size:12px;font-weight:700;color:var(--orange)">94% Match</div>
+      </div>
+      <div style="height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin-bottom:6px"><div style="height:100%;width:94%;background:linear-gradient(90deg,var(--red),var(--orange));border-radius:2px"></div></div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5)">เหมาะกับคนดูวิดีโอ เล่นโซเชียล และใช้งานทุกวัน</div>
+    </div>
+    <div style="font-size:11px;color:rgba(255,255,255,.35);text-align:center">Based on your usage pattern • 4 questions only</div>
+  </div>
+</div>
+</section>
+
+<!-- ESIM TOURIST -->
+<section class="sec" style="background:linear-gradient(135deg,#0D0D14,#1A0A14)">
+<div class="sec-w" style="text-align:center;color:#fff">
+  <div class="sec-tag" style="background:rgba(255,107,43,.15);color:var(--orange)">eSIM</div>
+  <div class="sec-title" style="color:#fff;margin-bottom:12px">Traveling to Laos?</div>
+  <p style="color:rgba(255,255,255,.6);font-size:16px;margin-bottom:28px">Get connected instantly with Unitel eSIM — no physical SIM needed, activate in minutes</p>
+  <button class="btn btn-lg" style="background:var(--orange);color:#fff;border:none" onclick="go('esim')">Buy Tourist eSIM →</button>
+</div>
+</section>
+
+<!-- WHY -->
+<section class="sec">
+<div class="sec-w">
+  <div class="sec-head" style="text-align:center">
+    <div class="sec-tag">Why Us</div>
+    <div class="sec-title">Why Choose Unitel Smart Connect</div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon wi-red">🔍</div><h4>Smart Number Search</h4><p>ค้นหาเบอร์ตามตัวเลขที่ต้องการ กรองตามราคาและประเภทได้ทันที</p></div>
+    <div class="why-card"><div class="why-icon wi-blue">⚡</div><h4>Instant Activation</h4><p>สมัครแพ็กเกจเน็ตออนไลน์ เปิดใช้ได้ทันทีไม่ต้องรอ</p></div>
+    <div class="why-card"><div class="why-icon wi-green">✦</div><h4>AI Recommendation</h4><p>ตอบ 4 คำถาม แล้วให้ AI แนะนำแพ็กเกจที่เหมาะกับคุณ</p></div>
+    <div class="why-card"><div class="why-icon wi-orange">📱</div><h4>eSIM Support</h4><p>รองรับ eSIM สำหรับนักท่องเที่ยว ซื้อออนไลน์ได้ทันที</p></div>
+    <div class="why-card"><div class="why-icon wi-purple">📦</div><h4>Order Tracking</h4><p>ติดตาม order ได้ real-time ตั้งแต่สั่งถึงได้รับ SIM</p></div>
+    <div class="why-card"><div class="why-icon wi-red">🛡️</div><h4>Secure Payment</h4><p>ชำระเงินปลอดภัย รองรับ QR Pay, Bank Transfer, COD</p></div>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: SHOP SIM NUMBERS
+════════════════════════════════════════════ -->
+<div class="page" id="page-shop">
+<section class="sec">
+<div class="sec-w">
+  <div class="sec-head">
+    <div class="sec-tag">Shop</div>
+    <div class="sec-title">Choose Your Perfect Number</div>
+  </div>
+  <div style="margin-bottom:20px">
+    <div class="qsearch-box" style="max-width:600px">
+      <span class="qs-icon">🔍</span>
+      <input type="text" id="shopSearch" placeholder="Search digits e.g. 888, 999, 020..." oninput="filterShop()">
+    </div>
+  </div>
+  <div class="shop-layout">
+    <div class="filter-panel">
+      <div class="filter-section">
+        <div class="filter-title">Number Type</div>
+        <label class="filter-check"><input type="checkbox" checked onchange="filterShop()"> All Types</label>
+        <label class="filter-check"><input type="checkbox" class="ft" value="vip" onchange="filterShop()"> 👑 VIP Number</label>
+        <label class="filter-check"><input type="checkbox" class="ft" value="lucky" onchange="filterShop()"> 🍀 Lucky Number</label>
+        <label class="filter-check"><input type="checkbox" class="ft" value="easy" onchange="filterShop()"> 🎯 Easy Remember</label>
+        <label class="filter-check"><input type="checkbox" class="ft" value="premium" onchange="filterShop()"> 💎 Premium</label>
+        <label class="filter-check"><input type="checkbox" class="ft" value="hot" onchange="filterShop()"> 🔥 Hot Deal</label>
+      </div>
+      <div class="filter-section">
+        <div class="filter-title">Price Range (₭)</div>
+        <div class="price-range">
+          <input type="range" min="0" max="2000000" step="50000" value="2000000" id="priceRange" oninput="filterShop()">
+          <div class="price-display"><span>0₭</span><span id="priceMax">2,000,000₭</span></div>
+        </div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-title">Status</div>
+        <label class="filter-check"><input type="checkbox" checked onchange="filterShop()"> ✅ Available</label>
+        <label class="filter-check"><input type="checkbox" onchange="filterShop()"> ⏳ Reserved</label>
+      </div>
+    </div>
+    <div>
+      <div class="shop-header">
+        <div class="result-count" id="shopCount">Showing all numbers</div>
+        <select class="sort-sel" id="shopSort" onchange="filterShop()">
+          <option value="pop">Most Popular</option>
+          <option value="asc">Price: Low to High</option>
+          <option value="desc">Price: High to Low</option>
+        </select>
+      </div>
+      <div class="numbers-grid" id="shopGrid"></div>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: NUMBER DETAIL
+════════════════════════════════════════════ -->
+<div class="page" id="page-detail">
+<div class="detail-hero">
+<div class="detail-w">
+  <div>
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap" id="detailTags"></div>
+    <div class="detail-number" id="detailNum">020 8888 9999</div>
+    <div class="detail-meaning" id="detailMeaning"></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;max-width:460px">
+      <div style="background:#fff;border-radius:var(--r);padding:14px;box-shadow:var(--s1);text-align:center">
+        <div style="font-size:11px;color:var(--ink3);margin-bottom:4px">Type</div>
+        <div style="font-weight:700;font-size:14px" id="detailType">VIP</div>
+      </div>
+      <div style="background:#fff;border-radius:var(--r);padding:14px;box-shadow:var(--s1);text-align:center">
+        <div style="font-size:11px;color:var(--ink3);margin-bottom:4px">Pattern</div>
+        <div style="font-weight:700;font-size:14px" id="detailPattern">Triple 8</div>
+      </div>
+      <div style="background:#fff;border-radius:var(--r);padding:14px;box-shadow:var(--s1);text-align:center">
+        <div style="font-size:11px;color:var(--ink3);margin-bottom:4px">Status</div>
+        <div style="font-weight:700;font-size:14px;color:#00A050">Available</div>
+      </div>
+    </div>
+    <h3 style="margin-bottom:14px;font-size:16px">Recommended Packages for this SIM</h3>
+    <div style="display:flex;gap:10px;flex-wrap:wrap" id="detailPkgs"></div>
+  </div>
+  <div class="detail-sticky">
+    <div class="avail-badge">Available Now</div>
+    <div class="detail-price-big" id="detailPrice">₭450,000</div>
+    <div class="detail-info-row" id="detailInfo"></div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <button class="btn btn-red btn-lg" style="width:100%" id="detailReserveBtn">Reserve Now</button>
+      <button class="btn btn-outline-red btn-lg" style="width:100%" id="detailCartBtn">🛒 Add to Cart</button>
+    </div>
+    <div style="margin-top:18px;padding:14px;background:var(--bg2);border-radius:10px;font-size:12.5px;color:var(--ink2);line-height:1.6">
+      ✅ Instant activation after payment<br>
+      ✅ Number reserved for 24 hours after booking<br>
+      ✅ Free SIM delivery nationwide
+    </div>
+  </div>
+</div>
+</div>
+<section class="sec">
+<div class="sec-w">
+  <div class="sec-head"><div class="sec-title">Similar Numbers You May Like</div></div>
+  <div class="numbers-grid" id="similarNums"></div>
+</div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: INTERNET PACKAGES
+════════════════════════════════════════════ -->
+<div class="page" id="page-packages">
+<section class="sec">
+<div class="sec-w">
+  <div class="sec-head">
+    <div class="sec-tag">Packages</div>
+    <div class="sec-title">Internet Packages</div>
+    <div class="sec-sub">Compare and find the best plan for your usage</div>
+  </div>
+  <div class="tab-strip" id="pkgTabs">
+    <div class="tab-btn on" onclick="pkgTab(this,'all')">All Packages</div>
+    <div class="tab-btn" onclick="pkgTab(this,'daily')">Daily</div>
+    <div class="tab-btn" onclick="pkgTab(this,'weekly')">Weekly</div>
+    <div class="tab-btn" onclick="pkgTab(this,'monthly')">Monthly</div>
+    <div class="tab-btn" onclick="pkgTab(this,'unlimited')">Unlimited</div>
+    <div class="tab-btn" onclick="pkgTab(this,'social')">Social</div>
+    <div class="tab-btn" onclick="pkgTab(this,'gaming')">Gaming</div>
+    <div class="tab-btn" onclick="pkgTab(this,'tourist')">Tourist</div>
+  </div>
+  <div id="pkgCompareBar" style="display:none;background:var(--bg2);border:1.5px solid var(--border2);border-radius:12px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;gap:12px">
+    <span style="font-size:13px;font-weight:600" id="compareCount">0 selected</span>
+    <button class="btn btn-red btn-sm" onclick="doCompare()">Compare Plans</button>
+    <button class="btn btn-ghost btn-sm" onclick="clearCompare()">Clear</button>
+  </div>
+  <div class="pkg-grid" id="pkgGrid"></div>
+</div>
+</section>
+<!-- Compare Table (hidden by default) -->
+<section class="sec sec-alt" id="compareSection" style="display:none">
+<div class="sec-w">
+  <div class="sec-head row">
+    <div><div class="sec-title">Package Comparison</div></div>
+    <button class="btn btn-ghost btn-sm" onclick="document.getElementById('compareSection').style.display='none'">Close ✕</button>
+  </div>
+  <div class="compare-table-wrap"><table class="compare-table" id="compareTable"></table></div>
+</div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: AI FINDER
+════════════════════════════════════════════ -->
+<div class="page" id="page-ai-finder">
+<section class="sec">
+<div class="sec-w">
+  <div style="text-align:center;max-width:540px;margin:0 auto 36px">
+    <div class="sec-tag">AI-Powered</div>
+    <div class="sec-title">AI Package Finder</div>
+    <p style="color:var(--ink2);font-size:15px;margin-top:8px">ตอบ 4 คำถาม แล้ว AI จะแนะนำแพ็กเกจที่เหมาะกับคุณที่สุด</p>
+  </div>
+  <div class="ai-finder" id="aiFinder">
+    <div class="ai-progress" id="aiProgress">
+      <div class="ai-step current"></div>
+      <div class="ai-step"></div>
+      <div class="ai-step"></div>
+      <div class="ai-step"></div>
+    </div>
+    <!-- Steps injected by JS -->
+    <div id="aiContent"></div>
+    <div class="ai-nav">
+      <div class="ai-step-label" id="aiStepLabel">Step 1 of 4</div>
+      <div style="display:flex;gap:10px" id="aiNavBtns">
+        <button class="btn btn-ghost btn-sm" id="aiBack" onclick="aiPrev()" style="display:none">← Back</button>
+        <button class="btn btn-red" id="aiNext" onclick="aiNext()">Next →</button>
+      </div>
+    </div>
+  </div>
+  <!-- AI Results -->
+  <div id="aiResults" style="display:none;max-width:800px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:28px">
+      <div class="sec-tag">Your Results</div>
+      <div class="sec-title">AI Recommendations for You</div>
+      <p style="color:var(--ink2);margin-top:8px;font-size:15px">Based on your answers, here are the best matches</p>
+    </div>
+    <div class="ai-results" id="aiResultCards"></div>
+    <div style="text-align:center;margin-top:24px">
+      <button class="btn btn-ghost" onclick="aiReset()">↺ Start Over</button>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: ESIM TOURIST
+════════════════════════════════════════════ -->
+<div class="page" id="page-esim">
+<div class="esim-hero">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="sec-tag" style="background:rgba(255,107,43,.15);color:var(--orange);margin-bottom:12px">eSIM for Tourist</div>
+    <h1>Traveling to Laos? Get<br>Connected <span>Instantly</span></h1>
+    <p style="font-size:16px;color:rgba(255,255,255,.65);max-width:500px;margin:16px auto 0;line-height:1.75">No physical SIM needed. Scan QR Code and start using within minutes. Works on all modern smartphones.</p>
+    <div class="esim-steps">
+      <div class="esim-step">
+        <div class="num">1</div>
+        <div class="t">Choose Plan</div>
+        <div class="s">Select data & duration</div>
+      </div>
+      <div class="esim-step">
+        <div class="num">2</div>
+        <div class="t">Pay & Get QR</div>
+        <div class="s">Instant QR to email</div>
+      </div>
+      <div class="esim-step">
+        <div class="num">3</div>
+        <div class="t">Scan & Connect</div>
+        <div class="s">Live in 2 minutes</div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="sec">
+<div class="sec-w">
+  <div class="sec-head row">
+    <div><div class="sec-tag">Choose Plan</div><div class="sec-title">eSIM Packages</div></div>
+    <div style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink3)">
+      Language: 
+      <div class="chip on" style="font-size:12px">🇺🇸 EN</div>
+      <div class="chip" style="font-size:12px">🇹🇭 TH</div>
+      <div class="chip" style="font-size:12px">🇨🇳 CN</div>
+      <div class="chip" style="font-size:12px">🇱🇦 LO</div>
+    </div>
+  </div>
+  <div class="esim-pkgs" id="esimGrid"></div>
+</div>
+</section>
+<section class="sec sec-alt">
+<div class="sec-w">
+  <div class="sec-head" style="text-align:center"><div class="sec-title">How to Activate Your eSIM</div></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;max-width:900px;margin:0 auto">
+    <div class="why-card">
+      <div class="why-icon wi-red" style="font-size:24px">📧</div>
+      <h4>1. Receive QR Code</h4>
+      <p>QR Code will be sent to your email within seconds after payment</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon wi-blue" style="font-size:24px">⚙️</div>
+      <h4>2. Open Settings</h4>
+      <p>Go to Settings → Cellular → Add eSIM on your iPhone or Android</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon wi-orange" style="font-size:24px">📷</div>
+      <h4>3. Scan QR Code</h4>
+      <p>Scan the QR code provided in your email to install the eSIM</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon wi-green" style="font-size:24px">🌐</div>
+      <h4>4. Start Browsing</h4>
+      <p>You're connected! Enjoy high-speed Unitel network across Laos</p>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: CART
+════════════════════════════════════════════ -->
+<div class="page" id="page-cart">
+<div style="padding:40px 0 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px;margin-bottom:20px">
+    <div class="sec-tag">Cart</div>
+    <div class="sec-title">Your Cart</div>
+  </div>
+</div>
+<div class="cart-layout">
+  <div>
+    <div class="cart-items" id="cartItemsList">
+      <div class="empty-state"><div class="empty-icon">🛒</div><p>Your cart is empty</p><br><button class="btn btn-red" onclick="go('shop')">Browse Numbers</button></div>
+    </div>
+    <!-- Upsell -->
+    <div class="panel" style="margin-top:16px" id="upsellSection">
+      <div class="panel-head"><h3>🎁 Add Recommended Package</h3></div>
+      <div style="padding:16px;display:flex;gap:12px;flex-wrap:wrap" id="upsellItems"></div>
+    </div>
+  </div>
+  <div>
+    <div class="order-summary">
+      <div class="panel-head"><h3>Order Summary</h3></div>
+      <div style="padding:16px">
+        <div class="os-row"><span class="k">Subtotal</span><span class="v" id="cartSubtotal">₭0</span></div>
+        <div class="os-row"><span class="k" style="color:#00A050">Discount</span><span class="v" style="color:#00A050" id="cartDiscount">-₭0</span></div>
+        <div class="os-row"><span class="k">Delivery</span><span class="v" id="cartDelivery">Free</span></div>
+        <div class="os-row total"><span class="k">Total</span><span class="v" id="cartTotal">₭0</span></div>
+        <button class="btn btn-red btn-lg" style="width:100%;margin-top:16px" onclick="go('checkout')">Proceed to Checkout →</button>
+        <button class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="go('shop')">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: CHECKOUT
+════════════════════════════════════════════ -->
+<div class="page" id="page-checkout">
+<div class="checkout-w">
+  <div class="sec-head">
+    <div class="sec-tag">Checkout</div>
+    <div class="sec-title">Complete Your Order</div>
+  </div>
+  <div class="checkout-steps">
+    <div class="cstep">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="cstep-dot current" id="cs1">1</div>
+        <div class="cstep-label">Your Info</div>
+      </div>
+      <div class="cstep-line" id="cl1"></div>
+    </div>
+    <div class="cstep">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="cstep-dot" id="cs2">2</div>
+        <div class="cstep-label">Delivery</div>
+      </div>
+      <div class="cstep-line" id="cl2"></div>
+    </div>
+    <div class="cstep">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="cstep-dot" id="cs3">3</div>
+        <div class="cstep-label">Payment</div>
+      </div>
+    </div>
+  </div>
+  <!-- Step 1 -->
+  <div class="step-wrap on" id="coStep1">
+    <h3 style="margin-bottom:20px">Customer Information</h3>
+    <div class="form-row"><div class="fg"><label>Full Name</label><input placeholder="Your full name"></div><div class="fg"><label>Phone Number</label><input placeholder="020 XXXX XXXX"></div></div>
+    <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+    <div class="fg"><label>Delivery Address</label><input placeholder="Street, Village, District, Province"></div>
+    <button class="btn btn-red btn-lg" onclick="coStep(2)">Continue →</button>
+  </div>
+  <!-- Step 2 -->
+  <div class="step-wrap" id="coStep2">
+    <h3 style="margin-bottom:20px">Delivery Method</h3>
+    <div class="delivery-opts">
+      <div class="delivery-opt sel" onclick="selDelivery(this)"><div class="do-icon">🏪</div><div><div style="font-weight:700;font-size:14px">Pick up at Store</div><div style="font-size:12px;color:var(--ink3)">Free • Ready in 1 hour</div></div></div>
+      <div class="delivery-opt" onclick="selDelivery(this)"><div class="do-icon">🚚</div><div><div style="font-weight:700;font-size:14px">Home Delivery</div><div style="font-size:12px;color:var(--ink3)">Free • 1-3 business days</div></div></div>
+      <div class="delivery-opt" onclick="selDelivery(this)"><div class="do-icon">📧</div><div><div style="font-weight:700;font-size:14px">eSIM by Email</div><div style="font-size:12px;color:var(--ink3)">Instant • Digital only</div></div></div>
+    </div>
+    <div style="display:flex;gap:10px"><button class="btn btn-ghost" onclick="coStep(1)">← Back</button><button class="btn btn-red" onclick="coStep(3)">Continue →</button></div>
+  </div>
+  <!-- Step 3 -->
+  <div class="step-wrap" id="coStep3">
+    <h3 style="margin-bottom:20px">Payment Method</h3>
+    <div class="pay-opts">
+      <div class="pay-opt sel" onclick="selPay(this)"><span style="font-size:22px">💵</span><div><div style="font-weight:700;font-size:13px">Cash on Delivery</div><div style="font-size:11px;color:var(--ink3)">Pay when received</div></div></div>
+      <div class="pay-opt" onclick="selPay(this)"><span style="font-size:22px">🏦</span><div><div style="font-weight:700;font-size:13px">Bank Transfer</div><div style="font-size:11px;color:var(--ink3)">BCEL · LDB · APB</div></div></div>
+      <div class="pay-opt" onclick="selPay(this)"><span style="font-size:22px">📲</span><div><div style="font-weight:700;font-size:13px">QR Payment</div><div style="font-size:11px;color:var(--ink3)">OnePay · BCEL One</div></div></div>
+      <div class="pay-opt" onclick="selPay(this)"><span style="font-size:22px">🏬</span><div><div style="font-weight:700;font-size:13px">Pay at Store</div><div style="font-size:11px;color:var(--ink3)">Any Unitel branch</div></div></div>
+    </div>
+    <div style="background:var(--bg2);border-radius:12px;padding:18px;margin-bottom:20px">
+      <div style="font-weight:700;font-size:14px;margin-bottom:10px">Order Summary</div>
+      <div id="coSummary"></div>
+    </div>
+    <div style="display:flex;gap:10px"><button class="btn btn-ghost" onclick="coStep(2)">← Back</button><button class="btn btn-red btn-lg" onclick="placeOrder()">Place Order →</button></div>
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: ORDER SUCCESS
+════════════════════════════════════════════ -->
+<div class="page" id="page-success">
+<div class="success-page">
+  <div class="success-icon">✓</div>
+  <h1>Order Placed!</h1>
+  <p style="color:var(--ink2);font-size:15px">Thank you for your order. We'll process it right away.</p>
+  <div class="order-num-box" id="orderNum">#USC-000000</div>
+  <p style="font-size:13px;color:var(--ink3);margin-bottom:28px">A confirmation email has been sent to your inbox</p>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+    <button class="btn btn-red" onclick="go('user-orders')">📦 Track Order</button>
+    <button class="btn btn-ghost" onclick="go('home')">Continue Shopping</button>
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: LOGIN / REGISTER
+════════════════════════════════════════════ -->
+<div class="page" id="page-login">
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo"><div class="logo-mark">U</div>Unitel Smart Connect</div>
+    <div class="auth-tabs">
+      <div class="auth-tab on" id="tabLogin" onclick="authTab('login')">Login</div>
+      <div class="auth-tab" id="tabReg" onclick="authTab('register')">Register</div>
+    </div>
+    <div class="auth-form on" id="formLogin">
+      <div class="fg"><label>Phone Number</label><input placeholder="020 XXXX XXXX" id="loginPhone"></div>
+      <div class="fg"><label>Password</label><input type="password" placeholder="Enter password"></div>
+      <div style="display:flex;justify-content:flex-end;margin:-8px 0 12px"><a style="font-size:13px;color:var(--red);cursor:pointer">Forgot password?</a></div>
+      <button class="btn btn-red" style="width:100%;padding:13px" onclick="doLogin()">Login</button>
+      <div style="text-align:center;margin:16px 0;font-size:13px;color:var(--ink3)">— or demo —</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <button class="btn btn-ghost btn-sm" style="width:100%" onclick="doAdminLogin()">🔐 Admin Demo</button>
+        <button class="btn btn-ghost btn-sm" style="width:100%" onclick="doUserLogin()">👤 User Demo</button>
+      </div>
+    </div>
+    <div class="auth-form" id="formReg">
+      <div class="form-row"><div class="fg"><label>Full Name</label><input placeholder="Your name"></div><div class="fg"><label>Phone</label><input placeholder="020 XXXX XXXX"></div></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="fg"><label>Password</label><input type="password" placeholder="Create password"></div>
+      <button class="btn btn-red" style="width:100%;padding:13px" onclick="doRegister()">Create Account</button>
+    </div>
+  </div>
+</div>
+</div>
+<div class="page" id="page-register">
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-logo"><div class="logo-mark">U</div>Unitel Smart Connect</div>
+    <div class="auth-tabs">
+      <div class="auth-tab" onclick="go('login')">Login</div>
+      <div class="auth-tab on">Register</div>
+    </div>
+    <div class="fg"><label>Full Name</label><input placeholder="Your full name"></div>
+    <div class="form-row"><div class="fg"><label>Phone</label><input placeholder="020 XXXX XXXX"></div><div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div></div>
+    <div class="fg"><label>Password</label><input type="password" placeholder="Create password"></div>
+    <button class="btn btn-red" style="width:100%;padding:13px" onclick="doRegister()">Create Account</button>
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: USER PROFILE
+════════════════════════════════════════════ -->
+<div class="page" id="page-user">
+<div class="dash-layout">
+  <div class="sidebar">
+    <div style="padding:12px;margin-bottom:8px">
+      <div style="width:52px;height:52px;background:linear-gradient(135deg,var(--red),var(--orange));border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:800;color:#fff;margin-bottom:10px">S</div>
+      <div style="font-weight:700;font-size:15px">Somchai V.</div>
+      <div style="font-size:12px;color:var(--ink3)">020 5555 1234</div>
+    </div>
+    <div class="sidebar-label">My Account</div>
+    <div class="slink on" onclick="userTab(this,'user-dash')"><span class="icon">📊</span>Dashboard</div>
+    <div class="slink" onclick="userTab(this,'user-sims')"><span class="icon">📱</span>My SIM Numbers</div>
+    <div class="slink" onclick="userTab(this,'user-pkgs')"><span class="icon">📦</span>My Packages</div>
+    <div class="slink" onclick="go('user-orders')"><span class="icon">🛒</span>Order History</div>
+    <div class="slink" onclick="userTab(this,'user-favs')"><span class="icon">❤️</span>Saved Numbers</div>
+    <div class="sidebar-label">Settings</div>
+    <div class="slink"><span class="icon">👤</span>Profile</div>
+    <div class="slink"><span class="icon">🔔</span>Notifications</div>
+    <div class="slink" onclick="go('home')"><span class="icon">🚪</span>Logout</div>
+  </div>
+  <div class="dash-content" id="userContent">
+    <div id="user-dash">
+      <div class="dash-head"><h1>Welcome back, Somchai! 👋</h1><button class="btn btn-red btn-sm" onclick="go('shop')">+ Buy SIM</button></div>
+      <div class="stats-row" style="grid-template-columns:repeat(3,1fr)">
+        <div class="stat-tile"><div class="label">Active SIMs</div><div class="value">2</div><div class="change">All active</div></div>
+        <div class="stat-tile"><div class="label">Total Spent</div><div class="value">₭2.4M</div><div class="change">↑ This year</div></div>
+        <div class="stat-tile"><div class="label">Loyalty Points</div><div class="value">3,240</div><div class="change">↑ +120 this month</div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>My Active SIMs</h3></div>
+        <div style="padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:linear-gradient(135deg,var(--red),var(--orange));border-radius:16px;padding:22px;color:#fff">
+            <div style="font-size:11px;opacity:.7;margin-bottom:6px">UNITEL LAO · VIP</div>
+            <div style="font-family:var(--fdisplay);font-size:24px;font-weight:800;letter-spacing:2px;margin-bottom:12px">020 5555 1234</div>
+            <div style="font-size:12px;opacity:.75">📦 MEGA 30GB</div>
+            <div style="margin-top:10px"><div style="font-size:11px;opacity:.7;margin-bottom:4px">Used: 18.5GB / 30GB</div><div style="height:4px;background:rgba(255,255,255,.25);border-radius:2px"><div style="height:100%;width:62%;background:#fff;border-radius:2px"></div></div></div>
+          </div>
+          <div style="background:linear-gradient(135deg,#1A1A2E,#2D1A4E);border-radius:16px;padding:22px;color:#fff">
+            <div style="font-size:11px;opacity:.7;margin-bottom:6px">UNITEL LAO · LUCKY</div>
+            <div style="font-family:var(--fdisplay);font-size:24px;font-weight:800;letter-spacing:2px;margin-bottom:12px">020 8888 8899</div>
+            <div style="font-size:12px;opacity:.75">📦 ULTRA Unlimited</div>
+            <div style="margin-top:10px"><div style="font-size:11px;opacity:.7;margin-bottom:4px">Unlimited Data ♾️</div><div style="height:4px;background:rgba(255,255,255,.25);border-radius:2px"><div style="height:100%;width:100%;background:var(--orange);border-radius:2px"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Recent Orders</h3><button class="btn btn-ghost btn-sm" onclick="go('user-orders')">View All</button></div>
+        <table><thead><tr><th>Order ID</th><th>Item</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>#USC-1045</td><td>MEGA 30GB Package</td><td>Dec 1</td><td>₭79,000</td><td><span class="status s-active">Active</span></td></tr>
+          <tr><td>#USC-1038</td><td>VIP 020-5555-1234</td><td>Nov 15</td><td>₭250,000</td><td><span class="status s-completed">Completed</span></td></tr>
+          <tr><td>#USC-1021</td><td>ULTRA Unlimited</td><td>Nov 1</td><td>₭149,000</td><td><span class="status s-active">Active</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div id="user-sims" style="display:none"><div class="dash-head"><h1>My SIM Numbers</h1></div><p style="color:var(--ink3)">Your purchased SIM numbers will appear here.</p></div>
+    <div id="user-pkgs" style="display:none"><div class="dash-head"><h1>My Packages</h1></div><p style="color:var(--ink3)">Your active packages will appear here.</p></div>
+    <div id="user-favs" style="display:none"><div class="dash-head"><h1>Saved Numbers</h1></div><p style="color:var(--ink3)">Numbers you've saved will appear here.</p></div>
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: ORDER HISTORY (USER)
+════════════════════════════════════════════ -->
+<div class="page" id="page-user-orders">
+<div class="dash-layout">
+  <div class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <div class="slink" onclick="go('user')"><span class="icon">←</span>Back to Dashboard</div>
+    <div class="slink on"><span class="icon">🛒</span>Order History</div>
+    <div class="slink" onclick="go('home')"><span class="icon">🏠</span>Home</div>
+  </div>
+  <div class="dash-content">
+    <div class="dash-head"><h1>Order History</h1></div>
+    <div class="panel">
+      <div class="panel-head"><h3>All Orders</h3></div>
+      <table><thead><tr><th>Order ID</th><th>Items</th><th>Date</th><th>Total</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>#USC-1045</td><td>MEGA 30GB Package</td><td>Dec 1, 2025</td><td>₭79,000</td><td><span class="status s-active">Active</span></td><td><button class="action-btn">Track</button></td></tr>
+        <tr><td>#USC-1038</td><td>VIP Number 020-5555-1234</td><td>Nov 15, 2025</td><td>₭250,000</td><td><span class="status s-completed">Completed</span></td><td><button class="action-btn">Details</button></td></tr>
+        <tr><td>#USC-1021</td><td>ULTRA Unlimited</td><td>Nov 1, 2025</td><td>₭149,000</td><td><span class="status s-active">Active</span></td><td><button class="action-btn">Track</button></td></tr>
+        <tr><td>#USC-1010</td><td>Lucky 020-8888-8899</td><td>Oct 20, 2025</td><td>₭500,000</td><td><span class="status s-completed">Completed</span></td><td><button class="action-btn">Details</button></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════════
+  PAGE: SUPPORT / FAQ
+════════════════════════════════════════════ -->
+<div class="page" id="page-support">
+<section class="sec">
+<div class="sec-w" style="max-width:760px">
+  <div class="sec-head"><div class="sec-tag">Support</div><div class="sec-title">Help & FAQ</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I reserve a SIM number?</div><div class="faq-a">Click on any SIM number card, then click "Reserve Now". You'll need to be logged in or provide your contact details. The number will be reserved for 24 hours.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does SIM delivery take?</div><div class="faq-a">Home delivery takes 1-3 business days nationwide. Pick up at any Unitel store is ready within 1 hour. eSIM is delivered to email instantly.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does the AI Package Finder work?</div><div class="faq-a">The AI asks you 4 questions about your usage habits, budget, and preferences. It then calculates a match score for each package and recommends the best 3 options for you.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What payment methods are accepted?</div><div class="faq-a">We accept Cash on Delivery, Bank Transfer (BCEL, LDB, APB), QR Payment via OnePay/BCEL One, and payment at any Unitel store.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I return a SIM number after purchase?</div><div class="faq-a">Reserved numbers can be cancelled within 24 hours. Once a SIM is activated, returns are not possible. Please contact our support team for special cases.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What devices support eSIM?</div><div class="faq-a">Most modern smartphones support eSIM including iPhone XS and newer, Samsung Galaxy S20+, Google Pixel 3+, and many more. Check your device settings for eSIM compatibility.</div></div>
+  <div style="margin-top:32px;background:var(--bg2);border-radius:var(--rl);padding:24px;text-align:center">
+    <div style="font-size:16px;font-weight:700;margin-bottom:8px">Still need help?</div>
+    <p style="font-size:14px;color:var(--ink3);margin-bottom:16px">Our support team is available 24/7</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn btn-red">📞 Call 1234</button>
+      <button class="btn btn-ghost">💬 Live Chat</button>
+      <button class="btn btn-ghost">📧 Email Us</button>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+<!-- ════════════════════════════════════════════
+  ADMIN PAGES
+════════════════════════════════════════════ -->
+<!-- Admin: Dashboard -->
+<div class="page" id="page-admin">
+<div class="dash-layout">
+  <div class="sidebar">
+    <div style="padding:10px 12px;margin-bottom:8px">
+      <div class="logo" style="font-size:15px;cursor:default"><div class="logo-mark" style="width:28px;height:28px;font-size:12px">U</div>Admin</div>
+    </div>
+    <div class="sidebar-label">Management</div>
+    <div class="slink on" onclick="go('admin')"><span class="icon">📊</span>Dashboard</div>
+    <div class="slink" onclick="go('admin-numbers')"><span class="icon">📱</span>SIM Numbers</div>
+    <div class="slink" onclick="go('admin-packages')"><span class="icon">📦</span>Packages</div>
+    <div class="slink" onclick="go('admin-orders')"><span class="icon">🛒</span>Orders</div>
+    <div class="slink" onclick="go('admin-customers')"><span class="icon">👥</span>Customers</div>
+    <div class="slink" onclick="go('admin-promos')"><span class="icon">🎁</span>Promotions</div>
+    <div class="slink" onclick="go('admin-reports')"><span class="icon">📈</span>Reports</div>
+    <div class="sidebar-label">System</div>
+    <div class="slink"><span class="icon">⚙️</span>Settings</div>
+    <div class="slink" onclick="go('home')"><span class="icon">🌐</span>View Site</div>
+    <div class="slink" onclick="go('home')"><span class="icon">🚪</span>Logout</div>
+  </div>
+  <div class="dash-content">
+    <div class="dash-head"><h1>Dashboard Overview</h1><div style="font-size:13px;color:var(--ink3)">Today: Dec 8, 2025</div></div>
+    <div class="stats-row">
+      <div class="stat-tile"><div class="label">Today's Revenue</div><div class="value">₭8.4M</div><div class="change">↑ +12% vs yesterday</div></div>
+      <div class="stat-tile"><div class="label">SIMs Sold (Total)</div><div class="value">12,840</div><div class="change">↑ +48 today</div></div>
+      <div class="stat-tile"><div class="label">Active Customers</div><div class="value">8,920</div><div class="change">↑ +5.4%</div></div>
+      <div class="stat-tile"><div class="label">Packages Active</div><div class="value">34,210</div><div class="change">↑ +890 this week</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:20px">
+      <div class="panel">
+        <div class="panel-head"><h3>Sales — Last 7 Days</h3></div>
+        <div class="chart-bar-wrap" id="salesChart"></div>
+        <div class="chart-labels" id="salesLabels"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Top Packages</h3></div>
+        <div style="padding:12px">
+          <div id="topPkgs"></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Recent Orders</h3><button class="btn btn-ghost btn-sm" onclick="go('admin-orders')">View All</button></div>
+      <table><thead><tr><th>Order ID</th><th>Customer</th><th>Item</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody id="adminRecentOrders"></tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Admin: Numbers -->
+<div class="page" id="page-admin-numbers">
+<div class="dash-layout">
+  <div class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <div class="slink" onclick="go('admin')"><span class="icon">←</span>Dashboard</div>
+    <div class="slink on"><span class="icon">📱</span>SIM Numbers</div>
+    <div class="slink" onclick="go('admin-packages')"><span class="icon">📦</span>Packages</div>
+    <div class="slink" onclick="go('admin-orders')"><span class="icon">🛒</span>Orders</div>
+  </div>
+  <div class="dash-content">
+    <div class="dash-head"><h1>Manage SIM Numbers</h1><button class="btn btn-red btn-sm" onclick="openAddSim()">+ Add Number</button></div>
+    <div style="margin-bottom:14px;display:flex;gap:10px;align-items:center">
+      <div class="qsearch-box" style="flex:1;max-width:400px"><span class="qs-icon">🔍</span><input type="text" placeholder="Search number..." oninput="filterAdminSims(this.value)"></div>
+      <select class="sort-sel" onchange="filterAdminSimsStatus(this.value)"><option value="all">All Status</option><option value="available">Available</option><option value="reserved">Reserved</option><option value="sold">Sold</option></select>
+    </div>
+    <div class="panel">
+      <table><thead><tr><th>Number</th><th>Type</th><th>Pattern</th><th>Price</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody id="adminSimsTable"></tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Admin: Packages -->
+<div class="page" id="page-admin-packages">
+<div class="dash-layout">
+  <div class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <div class="slink" onclick="go('admin')"><span class="icon">←</span>Dashboard</div>
+    <div class="slink" onclick="go('admin-numbers')"><span class="icon">📱</span>Numbers</div>
+    <div class="slink on"><span class="icon">📦</span>Packages</div>
+    <div class="slink" onclick="go('admin-orders')"><span class="icon">🛒</span>Orders</div>
+  </div>
+  <div class="dash-content">
+    <div class="dash-head"><h1>Manage Packages</h1><button class="btn btn-red btn-sm" onclick="openAddPkg()">+ Add Package</button></div>
+    <div class="panel">
+      <table><thead><tr><th>Name</th><th>Type</th><th>Data</th><th>Duration</th><th>Price</th><th>Subscribers</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody id="adminPkgsTable"></tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Admin: Orders -->
+<div class="page" id="page-admin-orders">
+<div class="dash-layout">
+  <div class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <div class="slink" onclick="go('admin')"><span class="icon">←</span>Dashboard</div>
+    <div class="slink" onclick="go('admin-numbers')"><span class="icon">📱</span>Numbers</div>
+    <div class="slink" onclick="go('admin-packages')"><span class="icon">📦</span>Packages</div>
+    <div class="slink on"><span class="icon">🛒</span>Orders</div>
+  </div>
+  <div class="dash-content">
+    <div class="dash-head"><h1>Manage Orders</h1><button class="btn btn-ghost btn-sm">Export CSV</button></div>
+    <div style="margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap">
+      <div class="chip on" onclick="filterAdminOrders(this,'all')">All</div>
+      <div class="chip" onclick="filterAdminOrders(this,'pending')">Pending</div>
+      <div class="chip" onclick="filterAdminOrders(this,'processing')">Processing</div>
+      <div class="chip" onclick="filterAdminOrders(this,'completed')">Completed</div>
+      <div class="chip" onclick="filterAdminOrders(this,'cancelled')">Cancelled</div>
+    </div>
+    <div class="panel">
+      <table><thead><tr><th>Order ID</th><th>Customer</th><th>Item</th><th>Date</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody id="adminOrdersTable"></tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Admin: Customers -->
+<div class="page" id="page-admin-customers">
+<div class="dash-layout">
+  <div class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <div class="slink" onclick="go('admin')"><span class="icon">←</span>Dashboard</div>
+    <div class="slink on"><span class="icon">👥</span>Customers</div>
+  </div>
+  <div class="dash-content">
+    <div class="dash-head"><h1>Customer Management</h1></div>
+    <div class="panel">
+      <table><thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>SIMs</th><th>Total Spent</th><th>Joined</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Somchai Viengvilay</td><td>020 5555 1234</td><td>somchai@email.com</td><td>2</td><td>₭978,000</td><td>Oct 2025</td><td><span class="status s-active">Active</span></td></tr>
+        <tr><td>Khamphanh Boupha</td><td>020 9999 8888</td><td>kham@email.com</td><td>1</td><td>₭229,000</td><td>Nov 2025</td><td><span class="status s-active">Active</span></td></tr>
+        <tr><td>Bouakham Phomma</td><td>020 7777 6655</td><td>bouakham@email.com</td><td>3</td><td>₭1,420,000</td><td>Sep 2025</td><td><span class="status s-active">Active</span></td></tr>
+        <tr><td>Viengxay Souksavanh</td><td>020 1111 2233</td><td>vieng@email.com</td><td>1</td><td>₭79,000</td><td>Dec 2025</td><td><span class="status s-pending">Pending</span></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Admin: Promos -->
+<div class="page" id="page-admin-promos">
+<div class="dash-layout">
+  <div class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <div class="slink" onclick="go('admin')"><span class="icon">←</span>Dashboard</div>
+    <div class="slink on"><span class="icon">🎁</span>Promotions</div>
+  </div>
+  <div class="dash-content">
+    <div class="dash-head"><h1>Promotion Management</h1><button class="btn btn-red btn-sm">+ Create Promo</button></div>
+    <div class="panel">
+      <table><thead><tr><th>Title</th><th>Discount</th><th>Start</th><th>End</th><th>Used</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>50% OFF VIP Numbers</td><td>50%</td><td>Dec 1</td><td>Dec 31</td><td>1,240</td><td><span class="status s-active">Active</span></td><td><button class="action-btn">Edit</button></td></tr>
+        <tr><td>Free SIM Delivery</td><td>Free Ship</td><td>Dec 1</td><td>Dec 15</td><td>890</td><td><span class="status s-active">Active</span></td><td><button class="action-btn">Edit</button></td></tr>
+        <tr><td>+10GB Bonus Data</td><td>Bonus</td><td>Dec 5</td><td>Dec 20</td><td>340</td><td><span class="status s-active">Active</span></td><td><button class="action-btn">Edit</button></td></tr>
+        <tr><td>Black Friday Deal</td><td>30%</td><td>Nov 28</td><td>Nov 30</td><td>2,100</td><td><span class="status s-cancelled">Ended</span></td><td><button class="action-btn">Copy</button></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Admin: Reports -->
+<div class="page" id="page-admin-reports">
+<div class="dash-layout">
+  <div class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <div class="slink" onclick="go('admin')"><span class="icon">←</span>Dashboard</div>
+    <div class="slink on"><span class="icon">📈</span>Reports</div>
+  </div>
+  <div class="dash-content">
+    <div class="dash-head"><h1>Reports & Analytics</h1></div>
+    <div class="stats-row">
+      <div class="stat-tile"><div class="label">Monthly Revenue</div><div class="value">₭284M</div><div class="change">↑ +18%</div></div>
+      <div class="stat-tile"><div class="label">Conversion Rate</div><div class="value">6.8%</div><div class="change">↑ +0.4%</div></div>
+      <div class="stat-tile"><div class="label">Avg Order Value</div><div class="value">₭185K</div><div class="change">↑ +8%</div></div>
+      <div class="stat-tile"><div class="label">Return Customers</div><div class="value">42%</div><div class="change">↑ +3%</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Best Selling Numbers by Type</h3></div>
+      <div style="padding:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        <div style="text-align:center;background:var(--bg2);border-radius:10px;padding:16px"><div style="font-size:28px;margin-bottom:8px">👑</div><div style="font-weight:700">VIP</div><div style="font-size:13px;color:var(--ink3)">3,240 sold</div></div>
+        <div style="text-align:center;background:var(--bg2);border-radius:10px;padding:16px"><div style="font-size:28px;margin-bottom:8px">🍀</div><div style="font-weight:700">Lucky</div><div style="font-size:13px;color:var(--ink3)">4,880 sold</div></div>
+        <div style="text-align:center;background:var(--bg2);border-radius:10px;padding:16px"><div style="font-size:28px;margin-bottom:8px">🎯</div><div style="font-weight:700">Easy</div><div style="font-size:13px;color:var(--ink3)">2,940 sold</div></div>
+        <div style="text-align:center;background:var(--bg2);border-radius:10px;padding:16px"><div style="font-size:28px;margin-bottom:8px">💎</div><div style="font-weight:700">Premium</div><div style="font-size:13px;color:var(--ink3)">1,780 sold</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Add SIM Modal -->
+<div class="form-modal-overlay" id="addSimModal">
+<div class="form-modal">
+  <div class="modal-close-btn" onclick="closeModal('addSimModal')">✕</div>
+  <h2>Add New SIM Number</h2>
+  <div class="form-row"><div class="fg"><label>Phone Number</label><input placeholder="020 XXXX XXXX" id="newNum"></div><div class="fg"><label>Type</label><select id="newType"><option>vip</option><option>lucky</option><option>easy</option><option>premium</option><option>hot</option></select></div></div>
+  <div class="form-row"><div class="fg"><label>Price (₭)</label><input placeholder="250000" id="newPrice"></div><div class="fg"><label>Pattern</label><input placeholder="Triple 8" id="newPattern"></div></div>
+  <div class="fg"><label>Description</label><textarea rows="2" placeholder="Meaning or special notes..." style="resize:none;padding:10px 14px;border:1.5px solid var(--border2);border-radius:10px;width:100%;font-size:14px;color:var(--ink)" id="newDesc"></textarea></div>
+  <div style="display:flex;gap:10px">
+    <button class="btn btn-red" onclick="submitAddSim()" style="flex:1">Add Number</button>
+    <button class="btn btn-ghost" onclick="closeModal('addSimModal')">Cancel</button>
+  </div>
+</div>
+</div>
+
+<!-- Add Package Modal -->
+<div class="form-modal-overlay" id="addPkgModal">
+<div class="form-modal">
+  <div class="modal-close-btn" onclick="closeModal('addPkgModal')">✕</div>
+  <h2>Add New Package</h2>
+  <div class="form-row"><div class="fg"><label>Package Name</label><input placeholder="Social Max" id="pName"></div><div class="fg"><label>Type</label><select id="pType"><option>monthly</option><option>daily</option><option>weekly</option><option>unlimited</option><option>social</option><option>gaming</option><option>tourist</option></select></div></div>
+  <div class="form-row"><div class="fg"><label>Data (GB / Unlimited)</label><input placeholder="30" id="pData"></div><div class="fg"><label>Validity (Days)</label><input placeholder="30" id="pDays"></div></div>
+  <div class="form-row"><div class="fg"><label>Price (₭)</label><input placeholder="79000" id="pPrice"></div><div class="fg"><label>Speed</label><input placeholder="100 Mbps" id="pSpeed"></div></div>
+  <div class="fg"><label>Best For (comma separated)</label><input placeholder="Social media, YouTube, TikTok" id="pBestFor"></div>
+  <label style="display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:16px;cursor:pointer"><input type="checkbox" id="pPopular" style="accent-color:var(--red)"> Mark as Best Seller</label>
+  <div style="display:flex;gap:10px">
+    <button class="btn btn-red" onclick="submitAddPkg()" style="flex:1">Add Package</button>
+    <button class="btn btn-ghost" onclick="closeModal('addPkgModal')">Cancel</button>
+  </div>
+</div>
+</div>
+
+<!-- Admin Badge -->
+<div class="admin-badge" id="adminBadge" style="display:none"><div class="dot"></div>Admin Mode Active</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════
+// DATA
+// ══════════════════════════════
+let allNums = [
+  {id:1,num:'020 8888 9999',type:'vip',pattern:'Quad 8+9',price:450000,old:900000,desc:'เลข 8 มงคลสูงสุด เสริมโชคลาภ',status:'available'},
+  {id:2,num:'020 5555 5555',type:'vip',pattern:'Full Repeating',price:1200000,old:2000000,desc:'เลขซ้ำทั้งหมด หายากมาก เสริมความมั่งคั่ง',status:'available'},
+  {id:3,num:'020 9999 0000',type:'premium',pattern:'Full 9 + Zero',price:800000,old:1200000,desc:'9 แทนความสำเร็จสูงสุด 0 แทนความสมบูรณ์',status:'available'},
+  {id:4,num:'020 1234 5678',type:'easy',pattern:'Sequential Up',price:50000,old:80000,desc:'เบอร์จำง่ายเรียงตามลำดับ',status:'available'},
+  {id:5,num:'020 7777 7777',type:'lucky',pattern:'Full 7',price:600000,old:1000000,desc:'7 ถือว่าเป็นเลขนำโชคในหลายวัฒนธรรม',status:'available'},
+  {id:6,num:'020 0990 0990',type:'lucky',pattern:'Mirror Pattern',price:180000,old:300000,desc:'เบอร์แว่นสะท้อน จำง่าย เป็นเอกลักษณ์',status:'available'},
+  {id:7,num:'020 1111 1111',type:'premium',pattern:'Full 1 - Unique',price:1500000,old:2500000,desc:'หายากที่สุด เลข 1 แทนความเป็นผู้นำ',status:'reserved'},
+  {id:8,num:'020 5678 9012',type:'easy',pattern:'Sequential',price:35000,old:55000,desc:'เบอร์เรียงง่าย จำได้ทันที',status:'available'},
+  {id:9,num:'020 8899 8899',type:'lucky',pattern:'Double Mirror',price:220000,old:380000,desc:'รูปแบบซ้ำสองชุด เสริมดวงชะตา',status:'available'},
+  {id:10,num:'020 3333 3333',type:'lucky',pattern:'Full 3',price:350000,old:600000,desc:'เลข 3 แทนความเจริญรุ่งเรือง',status:'available'},
+  {id:11,num:'020 6688 8866',type:'hot',pattern:'Six-Eight Mix',price:280000,old:450000,desc:'ผสม 6 และ 8 เสริมทั้งโชคและสุขภาพ',status:'available'},
+  {id:12,num:'020 9988 7766',type:'easy',pattern:'Descending',price:45000,old:70000,desc:'เบอร์เรียงลดตามลำดับ',status:'available'},
+];
+
+let allPkgs = [
+  {id:1,name:'Daily Lite',type:'daily',data:'1',unit:'GB',days:1,price:5000,speed:'50 Mbps',bestFor:['Social media','Basic browsing'],popular:false},
+  {id:2,name:'Day Max',type:'daily',data:'3',unit:'GB',days:1,price:9000,speed:'100 Mbps',bestFor:['Streaming','Social media'],popular:false},
+  {id:3,name:'Weekly Basic',type:'weekly',data:'5',unit:'GB',days:7,price:15000,speed:'50 Mbps',bestFor:['Light usage','Travel'],popular:false},
+  {id:4,name:'Weekly Plus',type:'weekly',data:'15',unit:'GB',days:7,price:29000,speed:'100 Mbps',bestFor:['Work','Video calls'],popular:false},
+  {id:5,name:'MINI 10',type:'monthly',data:'10',unit:'GB',days:30,price:35000,speed:'50 Mbps',bestFor:['Light usage','Social media'],popular:false},
+  {id:6,name:'Social Max',type:'social',data:'30',unit:'GB',days:30,price:59000,speed:'100 Mbps',bestFor:['TikTok','Facebook','YouTube'],popular:true},
+  {id:7,name:'MEGA 30',type:'monthly',data:'30',unit:'GB',days:30,price:79000,speed:'150 Mbps',bestFor:['Streaming','Social media','Work'],popular:true},
+  {id:8,name:'ULTRA Unlimited',type:'unlimited',data:'∞',unit:'',days:30,price:149000,speed:'300 Mbps',bestFor:['Heavy users','Hotspot','HD streaming'],popular:false},
+  {id:9,name:'Gamer Pro',type:'gaming',data:'50',unit:'GB',days:30,price:99000,speed:'500 Mbps',bestFor:['Online gaming','Low latency','Streaming'],popular:false},
+  {id:10,name:'Tourist 3D',type:'tourist',data:'3',unit:'GB',days:3,price:25000,speed:'100 Mbps',bestFor:['Tourists','Short stay','Maps & navigation'],popular:false},
+  {id:11,name:'Tourist 7D',type:'tourist',data:'8',unit:'GB',days:7,price:45000,speed:'100 Mbps',bestFor:['Tourists','1-week trip'],popular:true},
+  {id:12,name:'Student Pack',type:'monthly',data:'20',unit:'GB',days:30,price:49000,speed:'100 Mbps',bestFor:['Students','E-learning','Social media'],popular:false},
+];
+
+let esimPkgs = [
+  {name:'1-Day Pass',data:'2GB',days:1,price:'$3.99',flag:'🌏'},
+  {name:'3-Day Explorer',data:'5GB',days:3,price:'$7.99',flag:'🇱🇦'},
+  {name:'7-Day Adventure',data:'12GB',days:7,price:'$14.99',flag:'🌟'},
+  {name:'30-Day Connect',data:'30GB',days:30,price:'$29.99',flag:'🚀'},
+  {name:'Unlimited 7D',data:'Unlimited',days:7,price:'$24.99',flag:'♾️'},
+  {name:'Business 30D',data:'50GB',days:30,price:'$49.99',flag:'💼'},
+];
+
+let adminOrders = [
+  {id:'#USC-1045',cust:'Somchai V.',item:'MEGA 30GB Package',date:'Dec 1',amt:'₭79,000',status:'completed'},
+  {id:'#USC-1044',cust:'Khamphanh B.',item:'VIP 020-8888-9999',date:'Dec 1',amt:'₭450,000',status:'pending'},
+  {id:'#USC-1043',cust:'Bouakham P.',item:'Lucky 020-7777-7777',date:'Nov 30',amt:'₭600,000',status:'processing'},
+  {id:'#USC-1042',cust:'Viengxay S.',item:'ULTRA Unlimited',date:'Nov 30',amt:'₭149,000',status:'completed'},
+  {id:'#USC-1041',cust:'Naly K.',item:'Tourist 7D eSIM',date:'Nov 29',amt:'₭180,000',status:'completed'},
+];
+
+let cart = [];
+let compareList = [];
+
+// ══════════════════════════════
+// ROUTING
+// ══════════════════════════════
+function go(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  const el = document.getElementById('page-'+page);
+  if(el) el.classList.add('on');
+  window.scrollTo(0,0);
+  // Update nav
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('act', a.dataset.page===page);
+  });
+  // Admin badge
+  const isAdmin = ['admin','admin-numbers','admin-packages','admin-orders','admin-customers','admin-promos','admin-reports'].includes(page);
+  document.getElementById('adminBadge').style.display = isAdmin?'flex':'none';
+  // Re-render
+  if(page==='home') renderHome();
+  if(page==='shop') renderShop();
+  if(page==='packages') renderPackages();
+  if(page==='ai-finder') aiInit();
+  if(page==='esim') renderEsim();
+  if(page==='cart') renderCart();
+  if(page==='admin') renderAdmin();
+  if(page==='admin-numbers') renderAdminNums();
+  if(page==='admin-packages') renderAdminPkgs();
+  if(page==='admin-orders') renderAdminOrders();
+  if(page==='checkout') renderCheckout();
+}
+
+// ══════════════════════════════
+// NUMBER TAG HTML
+// ══════════════════════════════
+function tagHtml(type){
+  const map={vip:'👑 VIP',lucky:'🍀 Lucky',easy:'🎯 Easy',premium:'💎 Premium',hot:'🔥 Hot Deal'};
+  return `<span class="ncard-tag tag-${type}">${map[type]||type}</span>`;
+}
+
+// ══════════════════════════════
+// RENDER: HOME
+// ══════════════════════════════
+function renderHome(){
+  // Top 8 numbers
+  document.getElementById('homeNumGrid').innerHTML =
+    allNums.slice(0,8).map(n=>numCardHtml(n)).join('');
+  // Top 3 packages
+  const top3 = allPkgs.filter(p=>p.popular).slice(0,3);
+  document.getElementById('homePkgGrid').innerHTML = top3.map((p,i)=>pkgCardHtml(p,i===1)).join('');
+}
+
+function numCardHtml(n){
+  const fmt = v=>'₭'+Number(v).toLocaleString();
+  return `<div class="ncard" onclick="openDetail(${n.id})">
+    ${tagHtml(n.type)}
+    <div class="ncard-num">${n.num}</div>
+    <div class="ncard-pattern">${n.pattern}</div>
+    <div class="ncard-price">
+      <div class="old">${fmt(n.old)}</div>
+      <span class="new">${fmt(n.price)}</span> <span class="cur">LAK</span>
+    </div>
+    <div class="ncard-btns">
+      <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openDetail(${n.id})">View</button>
+      <button class="btn btn-red btn-sm" onclick="event.stopPropagation();addToCart('sim',${n.id})">Reserve</button>
+    </div>
+  </div>`;
+}
+
+function pkgCardHtml(p,featured=false){
+  return `<div class="pkgcard${featured?' featured':''}">
+    ${featured?'<div class="pop-badge">⭐ Best Seller</div>':''}
+    <div class="pkg-label-row">
+      <div class="pkg-type-tag">${p.type.toUpperCase()}</div>
+      ${p.popular?'<span style="font-size:11px;color:var(--amber);font-weight:700">🔥 Popular</span>':''}
+    </div>
+    <div class="pkg-name">${p.name}</div>
+    <div class="pkg-data">${p.data}<span>${p.unit}</span></div>
+    <div class="pkg-dur">${p.days} ${p.days===1?'Day':'Days'} validity</div>
+    <div class="pkg-price"><sup>₭</sup>${Number(p.price).toLocaleString()} <span class="lak">LAK/mo</span></div>
+    <ul class="pkg-feats">
+      ${p.bestFor.map(f=>`<li>${f}</li>`).join('')}
+      <li>${p.speed} Speed</li>
+    </ul>
+    <div class="pkg-use">Ideal for: ${p.bestFor.join(', ')}</div>
+    <button class="btn btn-red" style="width:100%" onclick="addToCart('pkg',${p.id})">Subscribe Now</button>
+    ${!featured?`<button class="btn btn-ghost btn-sm" style="width:100%;margin-top:8px" onclick="toggleCompare(${p.id})">Compare</button>`:''}
+  </div>`;
+}
+
+// ══════════════════════════════
+// RENDER: SHOP
+// ══════════════════════════════
+function renderShop(){
+  filterShop();
+}
+
+function filterShop(){
+  const q = (document.getElementById('shopSearch')?.value||'').toLowerCase().replace(/\s/g,'');
+  const priceMax = parseInt(document.getElementById('priceRange')?.value||2000000);
+  const sort = document.getElementById('shopSort')?.value||'pop';
+  document.getElementById('priceMax').textContent = Number(priceMax).toLocaleString()+'₭';
+  let data = allNums.filter(n=>{
+    if(q && !n.num.replace(/\s/g,'').includes(q)) return false;
+    if(n.price > priceMax) return false;
+    return true;
+  });
+  if(sort==='asc') data.sort((a,b)=>a.price-b.price);
+  else if(sort==='desc') data.sort((a,b)=>b.price-a.price);
+  document.getElementById('shopCount').textContent = `Showing ${data.length} numbers`;
+  document.getElementById('shopGrid').innerHTML = data.map(n=>numCardHtml(n)).join('') ||
+    `<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">🔍</div><p>No numbers found</p></div>`;
+}
+
+function doSearch(){
+  const q = document.getElementById('homeSearch')?.value||'';
+  go('shop');
+  setTimeout(()=>{
+    document.getElementById('shopSearch').value=q;
+    filterShop();
+  },100);
+}
+
+function filterType(el,type){
+  document.querySelectorAll('.filter-chips .chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  go('shop');
+}
+
+// ══════════════════════════════
+// RENDER: DETAIL
+// ══════════════════════════════
+function openDetail(id){
+  const n = allNums.find(x=>x.id===id);
+  if(!n) return;
+  document.getElementById('detailTags').innerHTML = tagHtml(n.type)+(n.status==='reserved'?'<span class="ncard-tag" style="background:rgba(255,170,0,.1);color:#9B6600">⏳ Reserved</span>':'');
+  document.getElementById('detailNum').textContent = n.num;
+  document.getElementById('detailMeaning').textContent = n.desc;
+  document.getElementById('detailType').textContent = n.type.toUpperCase();
+  document.getElementById('detailPattern').textContent = n.pattern;
+  document.getElementById('detailPrice').textContent = '₭'+Number(n.price).toLocaleString();
+  document.getElementById('detailInfo').innerHTML = `<div class="dinfo-chip">Pattern: ${n.pattern}</div><div class="dinfo-chip">Price: ₭${Number(n.price).toLocaleString()}</div>`;
+  // Rec packages
+  document.getElementById('detailPkgs').innerHTML = allPkgs.slice(0,3).map(p=>`
+    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;min-width:160px;cursor:pointer" onclick="addToCart('pkg',${p.id});toast('Package added!')">
+      <div style="font-size:12px;color:var(--ink3)">Recommended</div>
+      <div style="font-weight:700;font-size:15px">${p.name}</div>
+      <div style="font-size:13px;color:var(--red);font-weight:700">₭${Number(p.price).toLocaleString()}</div>
+    </div>
+  `).join('');
+  // Similar
+  document.getElementById('similarNums').innerHTML = allNums.filter(x=>x.id!==id&&x.type===n.type).slice(0,4).map(x=>numCardHtml(x)).join('');
+  // Buttons
+  document.getElementById('detailReserveBtn').onclick = ()=>{ addToCart('sim',id); };
+  document.getElementById('detailCartBtn').onclick = ()=>{ addToCart('sim',id); };
+  go('detail');
+}
+
+// ══════════════════════════════
+// RENDER: PACKAGES
+// ══════════════════════════════
+function renderPackages(type='all'){
+  let data = type==='all' ? allPkgs : allPkgs.filter(p=>p.type===type);
+  document.getElementById('pkgGrid').innerHTML = data.map((p,i)=>pkgCardHtml(p,p.popular&&type==='all'&&i<3)).join('');
+}
+
+function pkgTab(el,type){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  renderPackages(type);
+}
+
+let compareIds = [];
+function toggleCompare(id){
+  const idx = compareIds.indexOf(id);
+  if(idx>-1) compareIds.splice(idx,1);
+  else if(compareIds.length<3) compareIds.push(id);
+  const bar = document.getElementById('pkgCompareBar');
+  bar.style.display = compareIds.length>0?'flex':'none';
+  document.getElementById('compareCount').textContent = compareIds.length+' selected';
+}
+function doCompare(){
+  if(compareIds.length<2){toast('Select at least 2 packages');return;}
+  const pkgs = compareIds.map(id=>allPkgs.find(p=>p.id===id));
+  const rows = ['Data','Duration','Price','Speed','Best For'];
+  let html = `<thead><tr><th>Feature</th>${pkgs.map(p=>`<th>${p.name}</th>`).join('')}</tr></thead><tbody>`;
+  html += `<tr><td>Data</td>${pkgs.map(p=>`<td>${p.data}${p.unit}</td>`).join('')}</tr>`;
+  html += `<tr><td>Duration</td>${pkgs.map(p=>`<td>${p.days} days</td>`).join('')}</tr>`;
+  html += `<tr class="highlight"><td>Price</td>${pkgs.map(p=>`<td>₭${Number(p.price).toLocaleString()}</td>`).join('')}</tr>`;
+  html += `<tr><td>Speed</td>${pkgs.map(p=>`<td>${p.speed}</td>`).join('')}</tr>`;
+  html += `<tr><td>Best For</td>${pkgs.map(p=>`<td>${p.bestFor.join('<br>')}</td>`).join('')}</tr>`;
+  html += '</tbody>';
+  document.getElementById('compareTable').innerHTML = html;
+  document.getElementById('compareSection').style.display = 'block';
+  document.getElementById('compareSection').scrollIntoView({behavior:'smooth'});
+}
+function clearCompare(){compareIds=[];document.getElementById('pkgCompareBar').style.display='none';}
+
+// ══════════════════════════════
+// AI FINDER
+// ══════════════════════════════
+const aiSteps = [
+  {q:'What do you use internet for?',s:'Choose all that apply',choices:[
+    {ic:'📱',lbl:'Social Media',sub:'Facebook, TikTok, Instagram'},
+    {ic:'▶️',lbl:'Video Streaming',sub:'YouTube, Netflix'},
+    {ic:'🎮',lbl:'Gaming',sub:'Online games'},
+    {ic:'💼',lbl:'Work & Meeting',sub:'Zoom, Teams, Email'},
+    {ic:'✈️',lbl:'Travel',sub:'Maps, booking, tourism'},
+  ]},
+  {q:'How heavy is your usage?',s:'How many GB per day approximately',choices:[
+    {ic:'🌱',lbl:'Light',sub:'Under 1GB/day'},
+    {ic:'⚡',lbl:'Normal',sub:'1-3GB/day'},
+    {ic:'🔥',lbl:'Heavy',sub:'3-10GB/day'},
+    {ic:'♾️',lbl:'Unlimited',sub:'I stream all day'},
+  ]},
+  {q:'What is your budget?',s:'Monthly budget for internet',choices:[
+    {ic:'💚',lbl:'Save Money',sub:'Under ₭50,000'},
+    {ic:'⚖️',lbl:'Balanced',sub:'₭50,000-100,000'},
+    {ic:'👑',lbl:'Best Performance',sub:'No limit'},
+  ]},
+  {q:'How long do you need it?',s:'Choose your preferred duration',choices:[
+    {ic:'📅',lbl:'1 Day',sub:'Day pass'},
+    {ic:'📆',lbl:'7 Days',sub:'Weekly'},
+    {ic:'🗓️',lbl:'30 Days',sub:'Monthly'},
+  ]},
+];
+
+let aiStep = 0, aiAnswers = [];
+function aiInit(){
+  aiStep = 0; aiAnswers = [];
+  document.getElementById('aiFinder').style.display='block';
+  document.getElementById('aiResults').style.display='none';
+  renderAiStep();
+}
+function renderAiStep(){
+  const s = aiSteps[aiStep];
+  // Progress
+  document.querySelectorAll('.ai-step').forEach((el,i)=>{
+    el.className = 'ai-step'+(i<aiStep?' done':i===aiStep?' current':'');
+  });
+  document.getElementById('aiStepLabel').textContent = `Step ${aiStep+1} of ${aiSteps.length}`;
+  document.getElementById('aiBack').style.display = aiStep>0?'':'none';
+  document.getElementById('aiNext').textContent = aiStep===aiSteps.length-1?'Get Results ✦':'Next →';
+  document.getElementById('aiContent').innerHTML = `
+    <div class="ai-q">${s.q}</div>
+    <div class="ai-qs">${s.s}</div>
+    <div class="ai-choices">
+      ${s.choices.map((c,i)=>`<div class="ai-choice" onclick="aiSelect(this,${i})"><div class="ic">${c.ic}</div><div class="lbl">${c.lbl}</div><div class="sub">${c.sub}</div></div>`).join('')}
+    </div>`;
+  // Restore selection
+  if(aiAnswers[aiStep]!==undefined){
+    document.querySelectorAll('.ai-choice')[aiAnswers[aiStep]]?.classList.add('sel');
+  }
+}
+function aiSelect(el,i){
+  document.querySelectorAll('.ai-choice').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  aiAnswers[aiStep]=i;
+}
+function aiNext(){
+  if(aiAnswers[aiStep]===undefined){toast('Please select an option');return;}
+  if(aiStep<aiSteps.length-1){aiStep++;renderAiStep();}
+  else showAiResults();
+}
+function aiPrev(){if(aiStep>0){aiStep--;renderAiStep();}}
+function aiReset(){aiInit();}
+function showAiResults(){
+  document.getElementById('aiFinder').style.display='none';
+  document.getElementById('aiResults').style.display='block';
+  // Calculate matches
+  const usage = aiSteps[0].choices[aiAnswers[0]].lbl;
+  const heavy = aiAnswers[1]; // 0=light,1=normal,2=heavy,3=unlimited
+  const budget = aiAnswers[2]; // 0=save,1=balanced,2=best
+  const duration = aiAnswers[3]; // 0=1day,1=7day,2=30day
+
+  let scored = allPkgs.map(p=>{
+    let score = 50;
+    // Duration match
+    if(duration===0 && p.type==='daily') score+=30;
+    if(duration===1 && p.type==='weekly') score+=30;
+    if(duration===2 && p.days===30) score+=25;
+    // Usage match
+    if(heavy===3 && p.type==='unlimited') score+=30;
+    if(heavy===2 && parseInt(p.data)>=30) score+=20;
+    if(heavy===1 && parseInt(p.data)>=10) score+=15;
+    if(heavy===0 && p.price<=50000) score+=20;
+    // Budget
+    if(budget===0 && p.price<=50000) score+=20;
+    if(budget===1 && p.price<=100000) score+=15;
+    if(budget===2) score+=10;
+    // Best for match
+    if(usage.toLowerCase().includes('video') && p.bestFor.some(b=>b.toLowerCase().includes('youtube'))) score+=15;
+    if(usage.toLowerCase().includes('gaming') && p.type==='gaming') score+=25;
+    if(usage.toLowerCase().includes('social') && p.type==='social') score+=25;
+    if(p.popular) score+=10;
+    return {...p, score: Math.min(99,score)};
+  }).sort((a,b)=>b.score-a.score).slice(0,3);
+
+  const labels = ['Best Match','Cheapest Pick','Maximum Data'];
+  const sorted3 = [scored[0], [...allPkgs].sort((a,b)=>a.price-b.price)[0], [...allPkgs].sort((a,b)=>(b.data==='∞'?99999:parseInt(b.data))-(a.data==='∞'?99999:parseInt(a.data)))[0]];
+  document.getElementById('aiResultCards').innerHTML = scored.map((p,i)=>`
+    <div class="ai-result-card${i===0?' best':''}">
+      ${i===0?'<div style="font-size:11px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">✦ Best Match</div>':''}
+      <div style="font-size:12px;color:var(--ink3);font-weight:600;margin-bottom:6px">${labels[i]||'Alternative'}</div>
+      <div class="pkg-name" style="font-size:18px">${p.name}</div>
+      <div style="font-family:var(--fdisplay);font-size:28px;font-weight:900;margin:6px 0">${p.data}<span style="font-size:14px;font-weight:500;color:var(--ink3)">${p.unit}</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="match-pct">${p.score}% match</span>
+        <span style="font-family:var(--fdisplay);font-size:16px;font-weight:800;color:var(--red)">₭${Number(p.price).toLocaleString()}</span>
+      </div>
+      <div class="match-bar"><div class="match-fill" style="width:${p.score}%"></div></div>
+      <div class="ai-why">เหมาะกับคุณเพราะ ${p.bestFor.join(', ')} และใช้งาน ${aiSteps[0].choices[aiAnswers[0]].lbl} เป็นหลัก</div>
+      <button class="btn btn-red" style="width:100%;margin-top:14px" onclick="addToCart('pkg',${p.id})">Subscribe Now →</button>
+    </div>
+  `).join('');
+}
+
+// ══════════════════════════════
+// RENDER: ESIM
+// ══════════════════════════════
+function renderEsim(){
+  document.getElementById('esimGrid').innerHTML = esimPkgs.map(p=>`
+    <div class="esim-card">
+      <div class="esim-flag">${p.flag}</div>
+      <div class="esim-name">${p.name}</div>
+      <div class="esim-meta">${p.data} · ${p.days} ${p.days===1?'Day':'Days'} · Laos Coverage</div>
+      <div class="esim-price">${p.price}</div>
+      <button class="btn btn-red" style="width:100%" onclick="toast('✅ Redirecting to payment...')">Buy Now →</button>
+    </div>
+  `).join('');
+}
+
+// ══════════════════════════════
+// CART
+// ══════════════════════════════
+function addToCart(type,id){
+  if(type==='sim'){
+    const n=allNums.find(x=>x.id===id);
+    if(!n||n.status==='reserved'){toast('⚠️ Number is reserved');return;}
+    cart.push({type:'sim',id,name:n.num,tag:n.type,price:n.price});
+    toast('✅ '+n.num+' added to cart!');
+  } else {
+    const p=allPkgs.find(x=>x.id===id);
+    cart.push({type:'pkg',id,name:p.name,tag:'package',price:p.price});
+    toast('✅ '+p.name+' added to cart!');
+  }
+  document.getElementById('cartDot').textContent = cart.length;
+}
+
+function renderCart(){
+  const list = document.getElementById('cartItemsList');
+  if(cart.length===0){
+    list.innerHTML=`<div class="empty-state"><div class="empty-icon">🛒</div><p>Your cart is empty</p><br><button class="btn btn-red" onclick="go('shop')">Browse Numbers</button></div>`;
+    document.getElementById('cartSubtotal').textContent='₭0';
+    document.getElementById('cartTotal').textContent='₭0';
+    return;
+  }
+  list.innerHTML = cart.map((c,i)=>`
+    <div class="cart-item">
+      <div class="ci-icon">${c.type==='sim'?'📱':'📦'}</div>
+      <div class="ci-info">
+        <div class="ci-name">${c.name}</div>
+        <div class="ci-type">${c.tag.toUpperCase()}</div>
+      </div>
+      <div class="ci-price">₭${Number(c.price).toLocaleString()}</div>
+      <button class="ci-remove" onclick="removeCart(${i})">✕</button>
+    </div>`).join('');
+  const sub = cart.reduce((a,c)=>a+c.price,0);
+  document.getElementById('cartSubtotal').textContent='₭'+sub.toLocaleString();
+  document.getElementById('cartDiscount').textContent='-₭0';
+  document.getElementById('cartTotal').textContent='₭'+sub.toLocaleString();
+  // Upsell
+  const hasSim = cart.some(c=>c.type==='sim');
+  const hasPkg = cart.some(c=>c.type==='pkg');
+  const upsell = document.getElementById('upsellItems');
+  if(hasSim && !hasPkg){
+    upsell.innerHTML = allPkgs.slice(5,8).map(p=>`
+      <div style="background:var(--bg2);border-radius:10px;padding:14px;flex:1;min-width:160px">
+        <div style="font-size:12px;color:var(--ink3);margin-bottom:4px">${p.type.toUpperCase()}</div>
+        <div style="font-weight:700">${p.name}</div>
+        <div style="font-size:13px;color:var(--red);font-weight:700;margin:4px 0">₭${Number(p.price).toLocaleString()}</div>
+        <button class="btn btn-red btn-sm" onclick="addToCart('pkg',${p.id})">Add</button>
+      </div>`).join('');
+  } else { upsell.innerHTML='<p style="font-size:13px;color:var(--ink3);padding:4px">Your cart looks complete! 🎉</p>'; }
+}
+
+function removeCart(i){
+  cart.splice(i,1);
+  document.getElementById('cartDot').textContent=cart.length;
+  renderCart();
+  toast('Item removed');
+}
+
+// ══════════════════════════════
+// CHECKOUT
+// ══════════════════════════════
+let coStepN = 1;
+function renderCheckout(){
+  coStep(1);
+  const sum = document.getElementById('coSummary');
+  const total = cart.reduce((a,c)=>a+c.price,0);
+  sum.innerHTML = cart.map(c=>`<div style="display:flex;justify-content:space-between;font-size:13.5px;padding:4px 0"><span>${c.name}</span><span style="font-weight:700">₭${Number(c.price).toLocaleString()}</span></div>`).join('')+
+    `<div style="display:flex;justify-content:space-between;font-size:15px;font-weight:800;color:var(--red);padding:10px 0 0;border-top:1px solid var(--border);margin-top:8px"><span>Total</span><span>₭${total.toLocaleString()}</span></div>`;
+}
+function coStep(n){
+  coStepN=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('coStep'+i).className='step-wrap'+(i===n?' on':'');
+    const dot=document.getElementById('cs'+i);
+    dot.className='cstep-dot'+(i<n?' done':i===n?' current':'');
+    if(i<3) document.getElementById('cl'+i).className='cstep-line'+(i<n?' done':'');
+  });
+}
+function selDelivery(el){document.querySelectorAll('.delivery-opt').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');}
+function selPay(el){document.querySelectorAll('.pay-opt').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');}
+function placeOrder(){
+  cart=[];
+  document.getElementById('cartDot').textContent='0';
+  const num='#USC-'+Math.floor(100000+Math.random()*900000);
+  document.getElementById('orderNum').textContent=num;
+  go('success');
+  toast('🎉 Order placed successfully!');
+}
+
+// ══════════════════════════════
+// AUTH
+// ══════════════════════════════
+function authTab(t){
+  document.getElementById('tabLogin').classList.toggle('on',t==='login');
+  document.getElementById('tabReg').classList.toggle('on',t==='register');
+  document.getElementById('formLogin').classList.toggle('on',t==='login');
+  document.getElementById('formReg').classList.toggle('on',t==='register');
+}
+function doLogin(){ toast('✅ Logged in!'); go('user'); }
+function doRegister(){ toast('✅ Account created!'); go('user'); }
+function doAdminLogin(){ go('admin'); toast('🔐 Admin mode activated'); }
+function doUserLogin(){ go('user'); toast('👤 Welcome back, Somchai!'); }
+
+// ══════════════════════════════
+// ADMIN
+// ══════════════════════════════
+function renderAdmin(){
+  // Chart
+  const vals=[42,67,89,54,78,95,110];
+  const labels=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const max=Math.max(...vals);
+  document.getElementById('salesChart').innerHTML = vals.map((v,i)=>`
+    <div class="chart-bar" style="height:${(v/max)*100}%">
+      <div class="tip">₭${(v*80000).toLocaleString()}</div>
+    </div>`).join('');
+  document.getElementById('salesLabels').innerHTML = labels.map(l=>`<div class="chart-label">${l}</div>`).join('');
+  // Top pkgs
+  document.getElementById('topPkgs').innerHTML = allPkgs.filter(p=>p.popular).map(p=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:13.5px;font-weight:600">${p.name}</span>
+      <span style="font-size:13px;color:var(--red);font-weight:700">₭${Number(p.price).toLocaleString()}</span>
+    </div>`).join('');
+  document.getElementById('adminRecentOrders').innerHTML = adminOrders.map(o=>`
+    <tr><td>${o.id}</td><td>${o.cust}</td><td>${o.item}</td><td>${o.amt}</td>
+    <td><span class="status s-${o.status}">${o.status}</span></td>
+    <td><button class="action-btn" onclick="toast('Viewing order...')">View</button></td></tr>`).join('');
+}
+
+function renderAdminNums(){
+  document.getElementById('adminSimsTable').innerHTML = allNums.map((n,i)=>`
+    <tr>
+      <td><b>${n.num}</b></td>
+      <td>${tagHtml(n.type)}</td>
+      <td style="font-size:12px;color:var(--ink3)">${n.pattern}</td>
+      <td>₭${Number(n.price).toLocaleString()}</td>
+      <td><span class="status s-${n.status}">${n.status}</span></td>
+      <td>
+        <button class="action-btn" onclick="toast('Edit mode for ${n.num}')">Edit</button>
+        <select style="font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:5px;margin:0 4px" onchange="changeNumStatus(${n.id},this.value)">
+          <option ${n.status==='available'?'selected':''} value="available">Available</option>
+          <option ${n.status==='reserved'?'selected':''} value="reserved">Reserved</option>
+          <option ${n.status==='sold'?'selected':''} value="sold">Sold</option>
+        </select>
+        <button class="action-btn del" onclick="deleteNum(${n.id})">Delete</button>
+      </td>
+    </tr>`).join('');
+}
+
+function changeNumStatus(id,status){
+  const n=allNums.find(x=>x.id===id);
+  if(n){n.status=status;toast('Status updated to '+status);}
+}
+
+function deleteNum(id){
+  if(!confirm('Delete this number?')) return;
+  allNums=allNums.filter(x=>x.id!==id);
+  renderAdminNums();
+  toast('🗑️ Number deleted');
+}
+
+function filterAdminSims(q){
+  const rows=document.querySelectorAll('#adminSimsTable tr');
+  rows.forEach(r=>{r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())||!q?'':'none';});
+}
+function filterAdminSimsStatus(s){
+  if(s==='all'){document.querySelectorAll('#adminSimsTable tr').forEach(r=>r.style.display='');return;}
+  document.querySelectorAll('#adminSimsTable tr').forEach(r=>{r.style.display=r.textContent.toLowerCase().includes(s)?'':'none';});
+}
+
+function renderAdminPkgs(){
+  document.getElementById('adminPkgsTable').innerHTML = allPkgs.map((p,i)=>`
+    <tr>
+      <td><b>${p.name}</b>${p.popular?'<span class="status s-active" style="margin-left:6px;font-size:10px">Best Seller</span>':''}</td>
+      <td>${p.type}</td>
+      <td>${p.data}${p.unit}</td>
+      <td>${p.days} days</td>
+      <td>₭${Number(p.price).toLocaleString()}</td>
+      <td>${Math.floor(Math.random()*5000+500).toLocaleString()}</td>
+      <td><span class="status s-active">Active</span></td>
+      <td>
+        <button class="action-btn" onclick="toast('Editing '+p.name)">Edit</button>
+        <button class="action-btn del" onclick="deletePkg(${p.id})">Delete</button>
+      </td>
+    </tr>`).join('');
+}
+
+function deletePkg(id){
+  if(!confirm('Delete package?'))return;
+  allPkgs=allPkgs.filter(x=>x.id!==id);
+  renderAdminPkgs();
+  toast('🗑️ Package deleted');
+}
+
+function renderAdminOrders(){
+  document.getElementById('adminOrdersTable').innerHTML = adminOrders.map(o=>`
+    <tr>
+      <td>${o.id}</td><td>${o.cust}</td><td>${o.item}</td>
+      <td>${o.date}</td><td>${o.amt}</td>
+      <td>
+        <select style="font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:5px" onchange="updateOrderStatus(this)">
+          <option ${o.status==='pending'?'selected':''}>pending</option>
+          <option ${o.status==='processing'?'selected':''}>processing</option>
+          <option ${o.status==='completed'?'selected':''}>completed</option>
+          <option ${o.status==='cancelled'?'selected':''}>cancelled</option>
+        </select>
+      </td>
+      <td><button class="action-btn" onclick="toast('Viewing order details')">Details</button></td>
+    </tr>`).join('');
+}
+
+function filterAdminOrders(el,status){
+  document.querySelectorAll('.filter-chips .chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  const rows=document.querySelectorAll('#adminOrdersTable tr');
+  rows.forEach(r=>{r.style.display=status==='all'||r.textContent.toLowerCase().includes(status)?'':'none';});
+}
+
+function updateOrderStatus(sel){toast('✅ Status updated to '+sel.value);}
+
+// Add SIM/Pkg modals
+function openAddSim(){document.getElementById('addSimModal').classList.add('on');}
+function openAddPkg(){document.getElementById('addPkgModal').classList.add('on');}
+function closeModal(id){document.getElementById(id).classList.remove('on');}
+
+document.querySelectorAll('.form-modal-overlay').forEach(o=>{
+  o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('on');});
+});
+
+function submitAddSim(){
+  const num=document.getElementById('newNum').value;
+  const type=document.getElementById('newType').value;
+  const price=parseInt(document.getElementById('newPrice').value)||0;
+  const pattern=document.getElementById('newPattern').value;
+  if(!num){toast('⚠️ Enter phone number');return;}
+  allNums.unshift({id:Date.now(),num,type,pattern,price,old:price*1.5,desc:document.getElementById('newDesc').value,status:'available'});
+  closeModal('addSimModal');
+  renderAdminNums();
+  toast('✅ Number added: '+num);
+}
+
+function submitAddPkg(){
+  const name=document.getElementById('pName').value;
+  const type=document.getElementById('pType').value;
+  const data=document.getElementById('pData').value;
+  const days=parseInt(document.getElementById('pDays').value)||30;
+  const price=parseInt(document.getElementById('pPrice').value)||0;
+  const speed=document.getElementById('pSpeed').value||'100 Mbps';
+  const bestFor=document.getElementById('pBestFor').value.split(',').map(s=>s.trim());
+  const popular=document.getElementById('pPopular').checked;
+  if(!name){toast('⚠️ Enter package name');return;}
+  allPkgs.push({id:Date.now(),name,type,data,unit:'GB',days,price,speed,bestFor,popular});
+  closeModal('addPkgModal');
+  renderAdminPkgs();
+  toast('✅ Package added: '+name);
+}
+
+// ══════════════════════════════
+// MISC
+// ══════════════════════════════
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('in');
+  clearTimeout(t._t);
+  t._t=setTimeout(()=>t.classList.remove('in'),3000);
+}
+
+function toggleFaq(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+function userTab(el,tabId){
+  document.querySelectorAll('.sidebar .slink').forEach(l=>l.classList.remove('on'));
+  el.classList.add('on');
+  ['user-dash','user-sims','user-pkgs','user-favs'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.style.display=id===tabId?'block':'none';
+  });
+}
+
+// ══════════════════════════════
+// INIT
+// ══════════════════════════════
+renderHome();
+</script>
+</body>
+</html>
